@@ -213,7 +213,7 @@
          </property>
          <property name="styleSheet">
           <string notr="true">QPushButton#armButton {background-color: rgb(170, 255, 0);}
-QPushButton#armButton:checked {background-color: rgb(255, 0, 127); }</string>
+QPushButton#armButton:checked {background-color: rgb(209, 21, 7); }</string>
          </property>
          <property name="text">
           <string>Arm</string>
@@ -238,7 +238,7 @@ QPushButton#armButton:checked {background-color: rgb(255, 0, 127); }</string>
          </property>
          <property name="styleSheet">
           <string notr="true">QPushButton#abortButton:enabled {background-color: rgb(170, 255, 0);}
-QPushButton#abortButton:checked {background-color: rgb(255, 0, 127); }</string>
+QPushButton#abortButton:checked {background-color: rgb(209, 21, 7); }</string>
          </property>
          <property name="text">
           <string>Abort</string>

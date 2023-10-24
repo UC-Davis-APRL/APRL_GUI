@@ -10,6 +10,7 @@
 
 # Required Qt5 libraries
 from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5.QtCore import Qt
 
 # Custom widget library by Martin Fitzpatrick (mfitzp) available on pypi 
 from qtwidgets import AnimatedToggle
@@ -56,10 +57,10 @@ class Ui_MainWindow(object):
         self.label.setObjectName("label")
         self.verticalLayout_2.addWidget(self.label)
 
-        # Create first row of 
+        # First row of valveBox 
         self.horizontalLayout = QtWidgets.QHBoxLayout()
         self.horizontalLayout.setObjectName("horizontalLayout")
-        self.isoTog1 = AnimatedToggle(self.valveBox)
+        self.isoTog1 = AnimatedToggle(self.valveBox, checked_color="#1b9611", bar_color=Qt.red, pulse_unchecked_color="#f1807e", pulse_checked_color="#a9f0d7")
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -67,7 +68,7 @@ class Ui_MainWindow(object):
         self.isoTog1.setSizePolicy(sizePolicy)
         self.isoTog1.setObjectName("isoTog1")
         self.horizontalLayout.addWidget(self.isoTog1)
-        self.isoTog2 = AnimatedToggle(self.valveBox)
+        self.isoTog2 = AnimatedToggle(self.valveBox, checked_color="#1b9611", bar_color=Qt.red, pulse_unchecked_color="#f1807e", pulse_checked_color="#a9f0d7")
         self.isoTog2.setObjectName("isoTog2")
         self.horizontalLayout.addWidget(self.isoTog2)
         self.verticalLayout_2.addLayout(self.horizontalLayout)
@@ -80,37 +81,43 @@ class Ui_MainWindow(object):
         self.label_2.setAlignment(QtCore.Qt.AlignCenter)
         self.label_2.setObjectName("label_2")
         self.verticalLayout_2.addWidget(self.label_2)
+
+        # Second row of valveBox
         self.horizontalLayout_2 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_2.setObjectName("horizontalLayout_2")
-        self.mainTog1 = AnimatedToggle(self.valveBox)
+        self.mainTog1 = AnimatedToggle(self.valveBox, checked_color="#1b9611", bar_color=Qt.red, pulse_unchecked_color="#f1807e", pulse_checked_color="#a9f0d7")
         self.mainTog1.setObjectName("mainTog1")
         self.horizontalLayout_2.addWidget(self.mainTog1)
-        self.mainTog2 = AnimatedToggle(self.valveBox)
+        self.mainTog2 = AnimatedToggle(self.valveBox, checked_color="#1b9611", bar_color=Qt.red, pulse_unchecked_color="#f1807e", pulse_checked_color="#a9f0d7")
         self.mainTog2.setObjectName("mainTog2")
         self.horizontalLayout_2.addWidget(self.mainTog2)
         self.verticalLayout_2.addLayout(self.horizontalLayout_2)
         spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.verticalLayout_2.addItem(spacerItem)
+
+        # Third row of valveBox
         self.horizontalLayout_3 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_3.setObjectName("horizontalLayout_3")
         self.label_3 = QtWidgets.QLabel(self.valveBox)
         self.label_3.setAlignment(QtCore.Qt.AlignCenter)
         self.label_3.setObjectName("label_3")
         self.horizontalLayout_3.addWidget(self.label_3)
-        self.purgeTog = AnimatedToggle(self.valveBox)
+        self.purgeTog = AnimatedToggle(self.valveBox, checked_color="#1b9611", bar_color=Qt.red, pulse_unchecked_color="#f1807e", pulse_checked_color="#a9f0d7")
         self.purgeTog.setObjectName("purgeTog")
         self.horizontalLayout_3.addWidget(self.purgeTog)
         self.verticalLayout_2.addLayout(self.horizontalLayout_3)
         spacerItem1 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.verticalLayout_2.addItem(spacerItem1)
+
+        # Fourth row of valveBox
         self.horizontalLayout_4 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_4.setObjectName("horizontalLayout_4")
-        self.armButton = QtWidgets.QPushButton(self.valveBox)
+        self.armButton = QtWidgets.QPushButton(self.valveBox, clicked=lambda: armAbort())
         font = QtGui.QFont()
         font.setPointSize(11)
         self.armButton.setFont(font)
         self.armButton.setStyleSheet("QPushButton#armButton {background-color: rgb(170, 255, 0);}\n"
-"QPushButton#armButton:checked {background-color: rgb(255, 0, 127); }")
+"QPushButton#armButton:checked {background-color: rgb(209, 21, 7); }")
         self.armButton.setCheckable(True)
         self.armButton.setChecked(False)
         self.armButton.setObjectName("armButton")
@@ -121,13 +128,16 @@ class Ui_MainWindow(object):
         font.setPointSize(11)
         self.abortButton.setFont(font)
         self.abortButton.setStyleSheet("QPushButton#abortButton:enabled {background-color: rgb(170, 255, 0);}\n"
-"QPushButton#abortButton:checked {background-color: rgb(255, 0, 127); }")
+"QPushButton#abortButton:checked {background-color: rgb(209, 21, 7); }")
         self.abortButton.setCheckable(True)
         self.abortButton.setChecked(False)
         self.abortButton.setFlat(False)
         self.abortButton.setObjectName("abortButton")
         self.horizontalLayout_4.addWidget(self.abortButton)
         self.verticalLayout_2.addLayout(self.horizontalLayout_4)
+
+
+        # commandBox (box with command sequence buttons)
         self.commandBox = QtWidgets.QGroupBox(self.centralwidget)
         self.commandBox.setGeometry(QtCore.QRect(10, 350, 391, 381))
         font = QtGui.QFont()
@@ -150,6 +160,12 @@ class Ui_MainWindow(object):
         self.startupButton = QtWidgets.QPushButton(self.commandBox)
         self.startupButton.setObjectName("startupButton")
         self.verticalLayout.addWidget(self.startupButton)
+
+
+        # Timer widget in upper left corner
+
+        ## USE QTimer to implement a clock
+        
         self.timer = QtWidgets.QLabel(self.centralwidget)
         self.timer.setGeometry(QtCore.QRect(10, 140, 381, 61))
         font = QtGui.QFont()
@@ -160,6 +176,9 @@ class Ui_MainWindow(object):
         self.timer.setLineWidth(4)
         self.timer.setAlignment(QtCore.Qt.AlignCenter)
         self.timer.setObjectName("timer")
+
+
+        # Logging widget in upper right corner
         self.log = QtWidgets.QLabel(self.centralwidget)
         self.log.setGeometry(QtCore.QRect(490, 20, 391, 281))
         font = QtGui.QFont()
@@ -180,6 +199,8 @@ class Ui_MainWindow(object):
         self.menubar = QtWidgets.QMenuBar(MainWindow)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 889, 20))
         self.menubar.setObjectName("menubar")
+
+        # Menu and status bar (default with MainWindow)
         MainWindow.setMenuBar(self.menubar)
         self.statusbar = QtWidgets.QStatusBar(MainWindow)
         self.statusbar.setObjectName("statusbar")
@@ -187,6 +208,14 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
+
+
+        # Enables the ABORT button when ARM is pressed 
+        def armAbort():
+            armButtonStatus = self.armButton.isChecked()
+            self.abortButton.setEnabled(armButtonStatus)
+            
+
 
 
 

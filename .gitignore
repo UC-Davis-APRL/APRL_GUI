@@ -72,4 +72,4 @@ Thumbs.db
 *.exe
 
 # dev.py file is used for merging changes to APRL_GUIv0_1.py without overwriting the file
-dev.py
+**/dev.py

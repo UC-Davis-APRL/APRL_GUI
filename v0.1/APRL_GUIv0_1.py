@@ -10,10 +10,13 @@
 
 # Required Qt5 libraries
 from PyQt5 import QtCore, QtGui, QtWidgets
-from PyQt5.QtCore import Qt
+from PyQt5.QtCore import Qt, QTimer
 
 # Custom widget library by Martin Fitzpatrick (mfitzp) available on pypi 
 from qtwidgets import AnimatedToggle
+
+# Time library for the clock
+import time
 
 
 class Ui_MainWindow(object):
@@ -163,13 +166,11 @@ class Ui_MainWindow(object):
 
 
         # Timer widget in upper left corner
-
-        ## USE QTimer to implement a clock
         
         self.timer = QtWidgets.QLabel(self.centralwidget)
         self.timer.setGeometry(QtCore.QRect(10, 140, 381, 61))
         font = QtGui.QFont()
-        font.setPointSize(24)
+        font.setPointSize(20)
         self.timer.setFont(font)
         self.timer.setFrameShape(QtWidgets.QFrame.Panel)
         self.timer.setFrameShadow(QtWidgets.QFrame.Raised)
@@ -178,6 +179,11 @@ class Ui_MainWindow(object):
         self.timer.setObjectName("timer")
 
 
+        self.clock = QTimer()
+        self.clock.timeout.connect(self.setClock)
+        self.clock.start(1000)
+
+        
         # Logging widget in upper right corner
         self.log = QtWidgets.QLabel(self.centralwidget)
         self.log.setGeometry(QtCore.QRect(490, 20, 391, 281))
@@ -200,6 +206,9 @@ class Ui_MainWindow(object):
         self.menubar.setGeometry(QtCore.QRect(0, 0, 889, 20))
         self.menubar.setObjectName("menubar")
 
+        # Text buffer holding the action log
+        log = ""
+
         # Menu and status bar (default with MainWindow)
         MainWindow.setMenuBar(self.menubar)
         self.statusbar = QtWidgets.QStatusBar(MainWindow)
@@ -216,7 +225,20 @@ class Ui_MainWindow(object):
             self.abortButton.setEnabled(armButtonStatus)
             
 
+    # Clock function for timer 
+    def setClock(self):
+        t = time.time()
+        self.timer.setText(f"{time.strftime('%Y-%m-%d %H:%M:%S %Z', time.localtime(t))}")
 
+    
+    # Toggle function for logging
+    def logAction(self, objectName, action):
+
+        t = time.time()
+        currentTime = f"{time.strftime('%Y-%m-%d %H:%M:%S %Z', time.localtime(t))}"
+
+        actionLog += f"{currentTime}\n"
+        self.log.setText(actionLog)
 
 
 

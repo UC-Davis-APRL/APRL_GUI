@@ -42,7 +42,7 @@
     </property>
     <layout class="QVBoxLayout" name="verticalLayout_2">
      <item>
-      <widget class="QLabel" name="label">
+      <widget class="QLabel" name="isoValLabel">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
          <horstretch>0</horstretch>
@@ -63,7 +63,31 @@
       </widget>
      </item>
      <item>
-      <layout class="QHBoxLayout" name="horizontalLayout">
+      <layout class="QHBoxLayout" name="isoValLabels">
+       <item>
+        <widget class="QLabel" name="isoVal1Label">
+         <property name="text">
+          <string>#1</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="isoVal2Label">
+         <property name="text">
+          <string>#2</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="isoRow">
        <item>
         <widget class="AnimatedToggle" name="isoTog1">
          <property name="sizePolicy">
@@ -97,7 +121,7 @@
       </layout>
      </item>
      <item>
-      <widget class="QLabel" name="label_2">
+      <widget class="QLabel" name="mainValLabel">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
          <horstretch>0</horstretch>
@@ -118,7 +142,31 @@
       </widget>
      </item>
      <item>
-      <layout class="QHBoxLayout" name="horizontalLayout_2">
+      <layout class="QHBoxLayout" name="mainValLabels">
+       <item>
+        <widget class="QLabel" name="mainVal1Label">
+         <property name="text">
+          <string>#1</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="mainVal2Label">
+         <property name="text">
+          <string>#2</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="mainRow">
        <item>
         <widget class="AnimatedToggle" name="mainTog1">
          <property name="font">
@@ -159,9 +207,9 @@
       </spacer>
      </item>
      <item>
-      <layout class="QHBoxLayout" name="horizontalLayout_3">
+      <layout class="QHBoxLayout" name="purgeRow">
        <item>
-        <widget class="QLabel" name="label_3">
+        <widget class="QLabel" name="purgeValLabel">
          <property name="font">
           <font>
            <pointsize>11</pointsize>
@@ -203,7 +251,7 @@
       </spacer>
      </item>
      <item>
-      <layout class="QHBoxLayout" name="horizontalLayout_4">
+      <layout class="QHBoxLayout" name="rsoRow">
        <item>
         <widget class="QPushButton" name="armButton">
          <property name="font">

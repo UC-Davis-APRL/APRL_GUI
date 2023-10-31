@@ -25,6 +25,8 @@ class Ui_MainWindow(object):
 
     def setupUi(self, MainWindow):
 
+        self.actionLog = ""
+
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(889, 777)
 
@@ -45,24 +47,42 @@ class Ui_MainWindow(object):
         # Layout of items inside valveBox
         self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.valveBox)
         self.verticalLayout_2.setObjectName("verticalLayout_2")
-        self.label = QtWidgets.QLabel(self.valveBox)
+        self.isoValLabel = QtWidgets.QLabel(self.valveBox)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.label.sizePolicy().hasHeightForWidth())
-        self.label.setSizePolicy(sizePolicy)
-
+        sizePolicy.setHeightForWidth(self.isoValLabel.sizePolicy().hasHeightForWidth())
+        self.isoValLabel.setSizePolicy(sizePolicy)
         font = QtGui.QFont()
         font.setPointSize(11)
-        self.label.setFont(font)
+        self.isoValLabel.setFont(font)
         
-        self.label.setAlignment(QtCore.Qt.AlignCenter)
-        self.label.setObjectName("label")
-        self.verticalLayout_2.addWidget(self.label)
+        self.isoValLabel.setAlignment(QtCore.Qt.AlignCenter)
+        self.isoValLabel.setObjectName("isoValLabel")
+        self.verticalLayout_2.addWidget(self.isoValLabel)
 
         # First row of valveBox 
-        self.horizontalLayout = QtWidgets.QHBoxLayout()
-        self.horizontalLayout.setObjectName("horizontalLayout")
+
+        self.isoValLabels = QtWidgets.QHBoxLayout()
+        self.isoValLabels.setObjectName("isoValLabels")
+
+
+        self.isoVal1Label = QtWidgets.QLabel(self.valveBox)
+        self.isoVal1Label.setAlignment(QtCore.Qt.AlignCenter)
+        self.isoVal1Label.setObjectName("isoVal1Label")
+        self.isoValLabels.addWidget(self.isoVal1Label)
+        self.isoVal2Label = QtWidgets.QLabel(self.valveBox)
+        self.isoVal2Label.setAlignment(QtCore.Qt.AlignCenter)
+        self.isoVal2Label.setObjectName("isoVal2Label")
+        self.isoValLabels.addWidget(self.isoVal2Label)
+        self.verticalLayout_2.addLayout(self.isoValLabels)
+        self.isoRow = QtWidgets.QHBoxLayout()
+        self.isoRow.setObjectName("isoRow")
+
+
+
+        self.isoValLabels = QtWidgets.QHBoxLayout()
+        self.isoValLabels.setObjectName("isoValLabels")
         self.isoTog1 = AnimatedToggle(self.valveBox, checked_color="#1b9611", bar_color=Qt.red, pulse_unchecked_color="#f1807e", pulse_checked_color="#a9f0d7")
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
@@ -70,52 +90,90 @@ class Ui_MainWindow(object):
         sizePolicy.setHeightForWidth(self.isoTog1.sizePolicy().hasHeightForWidth())
         self.isoTog1.setSizePolicy(sizePolicy)
         self.isoTog1.setObjectName("isoTog1")
-        self.horizontalLayout.addWidget(self.isoTog1)
+
+        self.isoTog1.clicked.connect(lambda: self.toggleValve("Isol valve #1", self.isoTog1.isChecked()))
+
+
+        self.isoValLabels.addWidget(self.isoTog1)
         self.isoTog2 = AnimatedToggle(self.valveBox, checked_color="#1b9611", bar_color=Qt.red, pulse_unchecked_color="#f1807e", pulse_checked_color="#a9f0d7")
         self.isoTog2.setObjectName("isoTog2")
-        self.horizontalLayout.addWidget(self.isoTog2)
-        self.verticalLayout_2.addLayout(self.horizontalLayout)
-        self.label_2 = QtWidgets.QLabel(self.valveBox)
+
+        self.isoTog2.clicked.connect(lambda: self.toggleValve("Isol valve #2", self.isoTog2.isChecked()))
+
+
+        self.isoValLabels.addWidget(self.isoTog2)
+        self.verticalLayout_2.addLayout(self.isoValLabels)
+        self.mainValLabel = QtWidgets.QLabel(self.valveBox)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.label_2.sizePolicy().hasHeightForWidth())
-        self.label_2.setSizePolicy(sizePolicy)
-        self.label_2.setAlignment(QtCore.Qt.AlignCenter)
-        self.label_2.setObjectName("label_2")
-        self.verticalLayout_2.addWidget(self.label_2)
+        sizePolicy.setHeightForWidth(self.mainValLabel.sizePolicy().hasHeightForWidth())
+        self.mainValLabel.setSizePolicy(sizePolicy)
+        font = QtGui.QFont()
+        font.setPointSize(11)
+        self.mainValLabel.setFont(font)
+        self.mainValLabel.setAlignment(QtCore.Qt.AlignCenter)
+        self.mainValLabel.setObjectName("mainValLabel")
+        self.verticalLayout_2.addWidget(self.mainValLabel)
 
         # Second row of valveBox
-        self.horizontalLayout_2 = QtWidgets.QHBoxLayout()
-        self.horizontalLayout_2.setObjectName("horizontalLayout_2")
+
+        self.mainValLabels = QtWidgets.QHBoxLayout()
+        self.mainValLabels.setObjectName("mainValLabels")
+        self.mainVal1Label = QtWidgets.QLabel(self.valveBox)
+        self.mainVal1Label.setAlignment(QtCore.Qt.AlignCenter)
+        self.mainVal1Label.setObjectName("mainVal1Label")
+        self.mainValLabels.addWidget(self.mainVal1Label)
+        self.mainVal2Label = QtWidgets.QLabel(self.valveBox)
+        self.mainVal2Label.setAlignment(QtCore.Qt.AlignCenter)
+        self.mainVal2Label.setObjectName("mainVal2Label")
+        self.mainValLabels.addWidget(self.mainVal2Label)
+        self.verticalLayout_2.addLayout(self.mainValLabels)
+        self.mainRow = QtWidgets.QHBoxLayout()
+        self.mainRow.setObjectName("mainRow")
+    
+
+        self.mainValLabels = QtWidgets.QHBoxLayout()
+        self.mainValLabels.setObjectName("mainValLabels")
         self.mainTog1 = AnimatedToggle(self.valveBox, checked_color="#1b9611", bar_color=Qt.red, pulse_unchecked_color="#f1807e", pulse_checked_color="#a9f0d7")
         self.mainTog1.setObjectName("mainTog1")
-        self.horizontalLayout_2.addWidget(self.mainTog1)
+
+        self.mainTog1.clicked.connect(lambda: self.toggleValve("Main valve #1", self.mainTog1.isChecked()))
+
+
+        self.mainRow.addWidget(self.mainTog1)
         self.mainTog2 = AnimatedToggle(self.valveBox, checked_color="#1b9611", bar_color=Qt.red, pulse_unchecked_color="#f1807e", pulse_checked_color="#a9f0d7")
         self.mainTog2.setObjectName("mainTog2")
-        self.horizontalLayout_2.addWidget(self.mainTog2)
-        self.verticalLayout_2.addLayout(self.horizontalLayout_2)
+
+        self.mainTog2.clicked.connect(lambda: self.toggleValve("Main valve #2", self.mainTog2.isChecked()))
+
+        self.mainRow.addWidget(self.mainTog2)
+        self.verticalLayout_2.addLayout(self.mainRow)
         spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.verticalLayout_2.addItem(spacerItem)
 
         # Third row of valveBox
-        self.horizontalLayout_3 = QtWidgets.QHBoxLayout()
-        self.horizontalLayout_3.setObjectName("horizontalLayout_3")
-        self.label_3 = QtWidgets.QLabel(self.valveBox)
-        self.label_3.setAlignment(QtCore.Qt.AlignCenter)
-        self.label_3.setObjectName("label_3")
-        self.horizontalLayout_3.addWidget(self.label_3)
+        self.purgeRow = QtWidgets.QHBoxLayout()
+        self.purgeRow.setObjectName("purgeRow")
+        self.purgeValLabel = QtWidgets.QLabel(self.valveBox)
+        self.purgeValLabel.setAlignment(QtCore.Qt.AlignCenter)
+        self.purgeValLabel.setObjectName("purgeValLabel")
+        self.purgeRow.addWidget(self.purgeValLabel)
+
         self.purgeTog = AnimatedToggle(self.valveBox, checked_color="#1b9611", bar_color=Qt.red, pulse_unchecked_color="#f1807e", pulse_checked_color="#a9f0d7")
         self.purgeTog.setObjectName("purgeTog")
-        self.horizontalLayout_3.addWidget(self.purgeTog)
-        self.verticalLayout_2.addLayout(self.horizontalLayout_3)
+
+        self.purgeTog.clicked.connect(lambda: self.toggleValve("Purge valve", self.purgeTog.isChecked()))
+
+        self.purgeRow.addWidget(self.purgeTog)
+        self.verticalLayout_2.addLayout(self.purgeRow)
         spacerItem1 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.verticalLayout_2.addItem(spacerItem1)
 
         # Fourth row of valveBox
-        self.horizontalLayout_4 = QtWidgets.QHBoxLayout()
-        self.horizontalLayout_4.setObjectName("horizontalLayout_4")
-        self.armButton = QtWidgets.QPushButton(self.valveBox, clicked=lambda: armAbort())
+        self.rsoRow = QtWidgets.QHBoxLayout()
+        self.rsoRow.setObjectName("rsoRow")
+        self.armButton = QtWidgets.QPushButton(self.valveBox)
         font = QtGui.QFont()
         font.setPointSize(11)
         self.armButton.setFont(font)
@@ -124,7 +182,10 @@ class Ui_MainWindow(object):
         self.armButton.setCheckable(True)
         self.armButton.setChecked(False)
         self.armButton.setObjectName("armButton")
-        self.horizontalLayout_4.addWidget(self.armButton)
+        self.rsoRow.addWidget(self.armButton)
+        self.armButton.clicked.connect(self.armAbort)
+
+
         self.abortButton = QtWidgets.QPushButton(self.valveBox)
         self.abortButton.setEnabled(False)
         font = QtGui.QFont()
@@ -136,8 +197,10 @@ class Ui_MainWindow(object):
         self.abortButton.setChecked(False)
         self.abortButton.setFlat(False)
         self.abortButton.setObjectName("abortButton")
-        self.horizontalLayout_4.addWidget(self.abortButton)
-        self.verticalLayout_2.addLayout(self.horizontalLayout_4)
+        self.rsoRow.addWidget(self.abortButton)
+        self.abortButton.clicked.connect(self.abort)
+
+        self.verticalLayout_2.addLayout(self.rsoRow)
 
 
         # commandBox (box with command sequence buttons)
@@ -188,7 +251,7 @@ class Ui_MainWindow(object):
         self.log = QtWidgets.QLabel(self.centralwidget)
         self.log.setGeometry(QtCore.QRect(490, 20, 391, 281))
         font = QtGui.QFont()
-        font.setPointSize(13)
+        font.setPointSize(11)
         self.log.setFont(font)
         self.log.setFrameShape(QtWidgets.QFrame.Panel)
         self.log.setFrameShadow(QtWidgets.QFrame.Raised)
@@ -206,8 +269,6 @@ class Ui_MainWindow(object):
         self.menubar.setGeometry(QtCore.QRect(0, 0, 889, 20))
         self.menubar.setObjectName("menubar")
 
-        # Text buffer holding the action log
-        log = ""
 
         # Menu and status bar (default with MainWindow)
         MainWindow.setMenuBar(self.menubar)
@@ -219,11 +280,12 @@ class Ui_MainWindow(object):
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
 
-        # Enables the ABORT button when ARM is pressed 
-        def armAbort():
-            armButtonStatus = self.armButton.isChecked()
-            self.abortButton.setEnabled(armButtonStatus)
-            
+
+    # Enables the ABORT button when ARM is pressed 
+    def armAbort(self):
+        armButtonStatus = self.armButton.isChecked()
+        self.abortButton.setEnabled(armButtonStatus)
+        
 
     # Clock function for timer 
     def setClock(self):
@@ -231,29 +293,47 @@ class Ui_MainWindow(object):
         self.timer.setText(f"{time.strftime('%Y-%m-%d %H:%M:%S %Z', time.localtime(t))}")
 
     
-    # Toggle function for logging
-    def logAction(self, objectName, action):
+    # Function for logging
+    def logAction(self, name, state=''):
 
         t = time.time()
-        currentTime = f"{time.strftime('%Y-%m-%d %H:%M:%S %Z', time.localtime(t))}"
+        currentTime = f"{time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(t))}"
 
-        actionLog += f"{currentTime}\n"
-        self.log.setText(actionLog)
+        self.actionLog += f"{currentTime} - {name} {state}\n"
+        self.log.setText(self.actionLog)
 
 
+    def abort(self):
+        
+        # Send abort through serial        
+        self.logAction("Abort Called")
+
+    def toggleValve(self, name, state):
+
+        # Send valve signal through serial 
+
+        valveStatus = "opened" if state else "closed"
+        self.logAction(name, valveStatus)
+        
+    def sequence(self, name):
+        print("Command sequence called")
 
     ### AUTOGENERATED BY PYUIC5 ###
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
         self.valveBox.setTitle(_translate("MainWindow", "Valve Control Panel"))
-        self.label.setText(_translate("MainWindow", "Isolator Valves"))
+        self.isoValLabel.setText(_translate("MainWindow", "Isolator Valves"))
+        self.isoVal1Label.setText(_translate("MainWindow", "#1"))
+        self.isoVal2Label.setText(_translate("MainWindow", "#2"))
         self.isoTog1.setText(_translate("MainWindow", "CheckBox"))
         self.isoTog2.setText(_translate("MainWindow", "CheckBox"))
-        self.label_2.setText(_translate("MainWindow", "Main Valves"))
+        self.mainValLabel.setText(_translate("MainWindow", "Main Valves"))
+        self.mainVal1Label.setText(_translate("MainWindow", "#1"))
+        self.mainVal2Label.setText(_translate("MainWindow", "#2"))
         self.mainTog1.setText(_translate("MainWindow", "CheckBox"))
         self.mainTog2.setText(_translate("MainWindow", "CheckBox"))
-        self.label_3.setText(_translate("MainWindow", "Purge Valve"))
+        self.purgeValLabel.setText(_translate("MainWindow", "Purge Valve"))
         self.purgeTog.setText(_translate("MainWindow", "CheckBox"))
         self.armButton.setText(_translate("MainWindow", "Arm"))
         self.abortButton.setText(_translate("MainWindow", "Abort"))

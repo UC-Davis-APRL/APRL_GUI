@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 ('/mnt/c/Users/nucle/Code/APRL/GUI/APRL_GUI/v0.1/build/APRL_GUIv0_1/APRL_GUIv0_1.pkg',
+=======
+('D:\\Jason\\Code\\APRL\\APRL_GUI\\v0.1\\build\\APRL_GUIv0_1\\APRL_GUIv0_1.pkg',
+>>>>>>> c9d58365fab19d0b58d86126560fc86488c0d5ec
  {'BINARY': True,
   'DATA': True,
   'EXECUTABLE': True,
@@ -10,6 +14,7 @@
   'SYMLINK': False},
  [('pyi-contents-directory _internal', '', 'OPTION'),
   ('PYZ-00.pyz',
+<<<<<<< HEAD
    '/mnt/c/Users/nucle/Code/APRL/GUI/APRL_GUI/v0.1/build/APRL_GUIv0_1/PYZ-00.pyz',
    'PYZ'),
   ('struct',
@@ -43,6 +48,37 @@
    '/mnt/c/Users/nucle/Code/APRL/GUI/APRL_GUI/v0.1/APRL_GUIv0_1.py',
    'PYSOURCE')],
  'libpython3.10.so.1.0',
+=======
+   'D:\\Jason\\Code\\APRL\\APRL_GUI\\v0.1\\build\\APRL_GUIv0_1\\PYZ-00.pyz',
+   'PYZ'),
+  ('struct',
+   'D:\\Jason\\Code\\APRL\\APRL_GUI\\v0.1\\build\\APRL_GUIv0_1\\localpycs\\struct.pyc',
+   'PYMODULE'),
+  ('pyimod01_archive',
+   'D:\\Jason\\Code\\APRL\\APRL_GUI\\v0.1\\build\\APRL_GUIv0_1\\localpycs\\pyimod01_archive.pyc',
+   'PYMODULE'),
+  ('pyimod02_importers',
+   'D:\\Jason\\Code\\APRL\\APRL_GUI\\v0.1\\build\\APRL_GUIv0_1\\localpycs\\pyimod02_importers.pyc',
+   'PYMODULE'),
+  ('pyimod03_ctypes',
+   'D:\\Jason\\Code\\APRL\\APRL_GUI\\v0.1\\build\\APRL_GUIv0_1\\localpycs\\pyimod03_ctypes.pyc',
+   'PYMODULE'),
+  ('pyimod04_pywin32',
+   'D:\\Jason\\Code\\APRL\\APRL_GUI\\v0.1\\build\\APRL_GUIv0_1\\localpycs\\pyimod04_pywin32.pyc',
+   'PYMODULE'),
+  ('pyiboot01_bootstrap',
+   'D:\\Program '
+   'Files\\Python\\Lib\\site-packages\\PyInstaller\\loader\\pyiboot01_bootstrap.py',
+   'PYSOURCE'),
+  ('pyi_rth_inspect',
+   'D:\\Program '
+   'Files\\Python\\Lib\\site-packages\\PyInstaller\\hooks\\rthooks\\pyi_rth_inspect.py',
+   'PYSOURCE'),
+  ('APRL_GUIv0_1',
+   'D:\\Jason\\Code\\APRL\\APRL_GUI\\v0.1\\APRL_GUIv0_1.py',
+   'PYSOURCE')],
+ 'python311.dll',
+>>>>>>> c9d58365fab19d0b58d86126560fc86488c0d5ec
  True,
  False,
  False,

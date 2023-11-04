@@ -8,7 +8,8 @@ The final setup will include an ```.exe``` installer, but the ```.py``` file sho
 ### Dependencies
 * Python 3
 * PyQt5
-* qtwidget  
+* qtwidget
+* PySerial (serial)
 
 
 ## Contributing

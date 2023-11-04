@@ -67,7 +67,7 @@
        <item>
         <widget class="QLabel" name="isoVal1Label">
          <property name="text">
-          <string>#1</string>
+          <string>Kero</string>
          </property>
          <property name="alignment">
           <set>Qt::AlignCenter</set>
@@ -77,7 +77,7 @@
        <item>
         <widget class="QLabel" name="isoVal2Label">
          <property name="text">
-          <string>#2</string>
+          <string>LOX</string>
          </property>
          <property name="alignment">
           <set>Qt::AlignCenter</set>
@@ -146,7 +146,7 @@
        <item>
         <widget class="QLabel" name="mainVal1Label">
          <property name="text">
-          <string>#1</string>
+          <string>Kero</string>
          </property>
          <property name="alignment">
           <set>Qt::AlignCenter</set>
@@ -156,7 +156,7 @@
        <item>
         <widget class="QLabel" name="mainVal2Label">
          <property name="text">
-          <string>#2</string>
+          <string>LOX</string>
          </property>
          <property name="alignment">
           <set>Qt::AlignCenter</set>
@@ -194,29 +194,26 @@
       </layout>
      </item>
      <item>
-      <spacer name="horizontalSpacer">
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
+      <widget class="QLabel" name="purgeValLabel">
+       <property name="font">
+        <font>
+         <pointsize>11</pointsize>
+        </font>
        </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>40</width>
-         <height>20</height>
-        </size>
+       <property name="text">
+        <string>Purge Valves</string>
        </property>
-      </spacer>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
      </item>
      <item>
-      <layout class="QHBoxLayout" name="purgeRow">
+      <layout class="QHBoxLayout" name="purgeValLabels">
        <item>
-        <widget class="QLabel" name="purgeValLabel">
-         <property name="font">
-          <font>
-           <pointsize>11</pointsize>
-          </font>
-         </property>
+        <widget class="QLabel" name="purgeValLabel1">
          <property name="text">
-          <string>Purge Valve</string>
+          <string>Kero</string>
          </property>
          <property name="alignment">
           <set>Qt::AlignCenter</set>
@@ -224,7 +221,33 @@
         </widget>
        </item>
        <item>
-        <widget class="AnimatedToggle" name="purgeTog">
+        <widget class="QLabel" name="purgeValLabel2">
+         <property name="text">
+          <string>LOX</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="purgeRow">
+       <item>
+        <widget class="AnimatedToggle" name="purgeTog1">
+         <property name="font">
+          <font>
+           <pointsize>11</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>CheckBox</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="AnimatedToggle" name="purgeTog2">
          <property name="font">
           <font>
            <pointsize>11</pointsize>

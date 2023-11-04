@@ -99,14 +99,14 @@ class Ui_MainWindow(object):
         self.isoTog1.setSizePolicy(sizePolicy)
         self.isoTog1.setObjectName("isoTog1")
 
-        self.isoTog1.clicked.connect(lambda: self.toggleValve("Isol valve #1", self.isoTog1.isChecked()))
+        self.isoTog1.clicked.connect(lambda: self.toggleValve("Kero Isol valve (K1)", self.isoTog1.isChecked()))
 
 
         self.isoValLabels.addWidget(self.isoTog1)
         self.isoTog2 = AnimatedToggle(self.valveBox, checked_color="#1b9611", bar_color=Qt.red, pulse_unchecked_color="#f1807e", pulse_checked_color="#a9f0d7")
         self.isoTog2.setObjectName("isoTog2")
 
-        self.isoTog2.clicked.connect(lambda: self.toggleValve("Isol valve #2", self.isoTog2.isChecked()))
+        self.isoTog2.clicked.connect(lambda: self.toggleValve("LOX Isol valve (K2)", self.isoTog2.isChecked()))
 
 
         self.isoValLabels.addWidget(self.isoTog2)
@@ -146,14 +146,14 @@ class Ui_MainWindow(object):
         self.mainTog1 = AnimatedToggle(self.valveBox, checked_color="#1b9611", bar_color=Qt.red, pulse_unchecked_color="#f1807e", pulse_checked_color="#a9f0d7")
         self.mainTog1.setObjectName("mainTog1")
 
-        self.mainTog1.clicked.connect(lambda: self.toggleValve("Main valve #1", self.mainTog1.isChecked()))
+        self.mainTog1.clicked.connect(lambda: self.toggleValve("Kero main valve (K5)", self.mainTog1.isChecked()))
 
 
         self.mainRow.addWidget(self.mainTog1)
         self.mainTog2 = AnimatedToggle(self.valveBox, checked_color="#1b9611", bar_color=Qt.red, pulse_unchecked_color="#f1807e", pulse_checked_color="#a9f0d7")
         self.mainTog2.setObjectName("mainTog2")
 
-        self.mainTog2.clicked.connect(lambda: self.toggleValve("Main valve #2", self.mainTog2.isChecked()))
+        self.mainTog2.clicked.connect(lambda: self.toggleValve("LOX Main valve (K6)", self.mainTog2.isChecked()))
 
         self.mainRow.addWidget(self.mainTog2)
         self.verticalLayout_2.addLayout(self.mainRow)
@@ -164,16 +164,47 @@ class Ui_MainWindow(object):
         self.purgeRow = QtWidgets.QHBoxLayout()
         self.purgeRow.setObjectName("purgeRow")
         self.purgeValLabel = QtWidgets.QLabel(self.valveBox)
+        font = QtGui.QFont()
+        font.setPointSize(11)
+        self.purgeValLabel.setFont(font)
         self.purgeValLabel.setAlignment(QtCore.Qt.AlignCenter)
         self.purgeValLabel.setObjectName("purgeValLabel")
-        self.purgeRow.addWidget(self.purgeValLabel)
+        self.verticalLayout_2.addWidget(self.purgeValLabel)
 
-        self.purgeTog = AnimatedToggle(self.valveBox, checked_color="#1b9611", bar_color=Qt.red, pulse_unchecked_color="#f1807e", pulse_checked_color="#a9f0d7")
-        self.purgeTog.setObjectName("purgeTog")
+        self.purgeValLabels = QtWidgets.QHBoxLayout()
+        self.purgeValLabels.setObjectName("purgeValLabels")
+        self.purgeValLabel1 = QtWidgets.QLabel(self.valveBox)
+        self.purgeValLabel1.setAlignment(QtCore.Qt.AlignCenter)
+        self.purgeValLabel1.setObjectName("purgeValLabel1")
+        self.purgeValLabels.addWidget(self.purgeValLabel1)
+        self.purgeValLabel2 = QtWidgets.QLabel(self.valveBox)
+        self.purgeValLabel2.setAlignment(QtCore.Qt.AlignCenter)
+        self.purgeValLabel2.setObjectName("purgeValLabel2")
+        self.purgeValLabels.addWidget(self.purgeValLabel2)
+        self.verticalLayout_2.addLayout(self.purgeValLabels)
 
-        self.purgeTog.clicked.connect(lambda: self.toggleValve("Purge valve", self.purgeTog.isChecked()))
+        self.purgeRow = QtWidgets.QHBoxLayout()
+        self.purgeRow.setObjectName("purgeRow")
 
-        self.purgeRow.addWidget(self.purgeTog)
+        self.purgeTog1 = AnimatedToggle(self.valveBox, checked_color="#1b9611", bar_color=Qt.red, pulse_unchecked_color="#f1807e", pulse_checked_color="#a9f0d7")
+        
+        self.purgeTog1.clicked.connect(lambda: self.toggleValve("Kero Purge valve (K3)", self.purgeTog1.isChecked()))
+
+        font = QtGui.QFont()
+        font.setPointSize(11)
+        self.purgeTog1.setFont(font)
+        self.purgeTog1.setObjectName("purgeTog1")
+        self.purgeRow.addWidget(self.purgeTog1)
+
+        self.purgeTog2 = AnimatedToggle(self.valveBox, checked_color="#1b9611", bar_color=Qt.red, pulse_unchecked_color="#f1807e", pulse_checked_color="#a9f0d7")
+        
+        self.purgeTog2.clicked.connect(lambda: self.toggleValve("LOX Purge valve (K4)", self.purgeTog2.isChecked()))
+        
+        font = QtGui.QFont()
+        font.setPointSize(11)
+        self.purgeTog2.setFont(font)
+        self.purgeTog2.setObjectName("purgeTog2")
+        self.purgeRow.addWidget(self.purgeTog2)
         self.verticalLayout_2.addLayout(self.purgeRow)
         spacerItem1 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.verticalLayout_2.addItem(spacerItem1)
@@ -347,38 +378,80 @@ class Ui_MainWindow(object):
     def abort(self):
         
         # Send abort through serial     
-        self.connection.write(b'9')
+        self.connection.write(b'9\n')
+        
         self.logAction("Abort Called")
 
     def toggleValve(self, name, state):
 
-        
-        match(name):
-            case "Isol valve #1":
-                self.connection.write(b'1')
-            case "Isol valve #2":
-                self.connection.write(b'2')
-            case "Main valve #1":
-                self.connection.write(b'5')
-            case "Main valve #2":
-                self.connection.write(b'6')
-            
-
         valveStatus = "opened" if state else "closed"
         self.logAction(name, valveStatus)
+
+        match(name):
+            case "Kero Isol valve (K1)":
+                self.connection.write(b'1\n')
+                
+            case "LOX Isol valve (K2)":
+                self.connection.write(b'2\n')
+
+            case "Kero Purge valve (K3)":
+                self.connection.write(b'3\n')
+
+            case "LOX Purge valve (K4)":
+                self.connection.write(b'4\n')
+                
+            case "Kero Main valve (K5)":
+                self.connection.write(b'5\n')
+                
+            case "LOX Main valve (K6)":
+                self.connection.write(b'6\n')
+                
+            
+        
 
         
     def sequence(self, name):
 
+        self.logAction(name, "commanded")
+
         match(name):
             case "Leak check":
-                self.connection.write(b'7')
-            case "Engine purge":
-                self.connection.write(b'9')
-            case "Engine startup":
-                self.connection.write(b'8')   
+                self.connection.write(b'7\n')
 
-        self.logAction(name, "commanded")
+                # Update button state
+                self.isoTog1.toggle()
+                QTimer.singleShot(1000, lambda: self.isoTog1.toggle())
+
+                QTimer.singleShot(1000, lambda: self.isoTog2.toggle())      
+                QTimer.singleShot(2000, lambda: self.isoTog2.toggle())
+
+                QTimer.singleShot(2000, lambda: self.purgeTog1.toggle())      
+                QTimer.singleShot(3000, lambda: self.purgeTog1.toggle())
+
+                QTimer.singleShot(3000, lambda: self.purgeTog2.toggle())      
+                QTimer.singleShot(4000, lambda: self.purgeTog2.toggle())
+
+                QTimer.singleShot(4000, lambda: self.mainTog1.toggle())      
+                QTimer.singleShot(5000, lambda: self.mainTog1.toggle())
+
+                QTimer.singleShot(5000, lambda: self.mainTog2.toggle())      
+                QTimer.singleShot(6000, lambda: self.mainTog2.toggle())
+                 
+
+            case "Engine purge":
+                self.connection.write(b'9\n')
+                self.purgeTog1.toggle()
+                self.purgeTog2.toggle()
+                self.mainTog1.toggle()
+                self.mainTog2.toggle()
+                
+            case "Engine startup":
+                self.connection.write(b'8\n')
+                self.mainTog1.toggle()
+                self.mainTog2.toggle()
+                
+
+        
         
         
 
@@ -396,17 +469,20 @@ class Ui_MainWindow(object):
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
         self.valveBox.setTitle(_translate("MainWindow", "Valve Control Panel"))
         self.isoValLabel.setText(_translate("MainWindow", "Isolator Valves"))
-        self.isoVal1Label.setText(_translate("MainWindow", "#1"))
-        self.isoVal2Label.setText(_translate("MainWindow", "#2"))
+        self.isoVal1Label.setText(_translate("MainWindow", "Kero"))
+        self.isoVal2Label.setText(_translate("MainWindow", "LOX"))
         self.isoTog1.setText(_translate("MainWindow", "CheckBox"))
         self.isoTog2.setText(_translate("MainWindow", "CheckBox"))
         self.mainValLabel.setText(_translate("MainWindow", "Main Valves"))
-        self.mainVal1Label.setText(_translate("MainWindow", "#1"))
-        self.mainVal2Label.setText(_translate("MainWindow", "#2"))
+        self.mainVal1Label.setText(_translate("MainWindow", "Kero"))
+        self.mainVal2Label.setText(_translate("MainWindow", "LOX"))
         self.mainTog1.setText(_translate("MainWindow", "CheckBox"))
         self.mainTog2.setText(_translate("MainWindow", "CheckBox"))
-        self.purgeValLabel.setText(_translate("MainWindow", "Purge Valve"))
-        self.purgeTog.setText(_translate("MainWindow", "CheckBox"))
+        self.purgeValLabel.setText(_translate("MainWindow", "Purge Valves"))
+        self.purgeValLabel1.setText(_translate("MainWindow", "Kero"))
+        self.purgeValLabel2.setText(_translate("MainWindow", "LOX"))
+        self.purgeTog1.setText(_translate("MainWindow", "CheckBox"))
+        self.purgeTog2.setText(_translate("MainWindow", "CheckBox"))
         self.armButton.setText(_translate("MainWindow", "Arm"))
         self.abortButton.setText(_translate("MainWindow", "Abort"))
         self.commandBox.setTitle(_translate("MainWindow", "Engine Commands"))

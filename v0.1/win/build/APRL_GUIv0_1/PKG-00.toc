@@ -35,6 +35,18 @@
    'D:\\Program '
    'Files\\Python\\Lib\\site-packages\\PyInstaller\\hooks\\rthooks\\pyi_rth_inspect.py',
    'PYSOURCE'),
+  ('pyi_rth_pkgres',
+   'D:\\Program '
+   'Files\\Python\\Lib\\site-packages\\PyInstaller\\hooks\\rthooks\\pyi_rth_pkgres.py',
+   'PYSOURCE'),
+  ('pyi_rth_pkgutil',
+   'D:\\Program '
+   'Files\\Python\\Lib\\site-packages\\PyInstaller\\hooks\\rthooks\\pyi_rth_pkgutil.py',
+   'PYSOURCE'),
+  ('pyi_rth_pyqt5',
+   'D:\\Program '
+   'Files\\Python\\Lib\\site-packages\\PyInstaller\\hooks\\rthooks\\pyi_rth_pyqt5.py',
+   'PYSOURCE'),
   ('APRL_GUIv0_1',
    'D:\\Jason\\Code\\APRL\\APRL_GUI\\v0.1\\APRL_GUIv0_1.py',
    'PYSOURCE')],

@@ -50,7 +50,7 @@
  [],
  False,
  False,
- 1699213975,
+ 1699214349,
  [('run',
    '/mnt/c/Users/nucle/Code/APRL/GUI/env/lib/python3.10/site-packages/PyInstaller/bootloader/Linux-64bit-intel/run',
    'EXECUTABLE')],

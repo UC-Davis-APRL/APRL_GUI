@@ -76,11 +76,7 @@
  [],
  False,
  False,
-<<<<<<< HEAD
- 1699213678,
-=======
- 1699214336,
->>>>>>> 41d29cb7d9f0eab7528a721d42b744a68188bbf1
+ 1699215522,
  [('run.exe',
    'D:\\Program '
    'Files\\Python\\Lib\\site-packages\\PyInstaller\\bootloader\\Windows-64bit-intel\\run.exe',

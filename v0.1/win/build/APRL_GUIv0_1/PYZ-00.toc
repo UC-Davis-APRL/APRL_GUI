@@ -1,4 +1,4 @@
-('D:\\Jason\\Code\\APRL\\APRL_GUI\\v0.1\\build\\APRL_GUIv0_1\\PYZ-00.pyz',
+('D:\\Jason\\Code\\APRL\\APRL_GUI\\v0.1\\win\\build\\APRL_GUIv0_1\\PYZ-00.pyz',
  [('PyQt5',
    'D:\\Program Files\\Python\\Lib\\site-packages\\PyQt5\\__init__.py',
    'PYMODULE'),

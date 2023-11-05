@@ -320,12 +320,18 @@ class Ui_MainWindow(object):
         self.commandClear = QtWidgets.QPushButton(self.centralwidget)
         self.commandClear.setGeometry(QtCore.QRect(540, 310, 131, 31))
         self.commandClear.setObjectName("commandClear")
+        font = QtGui.QFont()
+        font.setPointSize(11)
+        self.commandClear.setFont(font)
 
         self.commandClear.clicked.connect(self.clearLog)
 
         self.commandSave = QtWidgets.QPushButton(self.centralwidget)
         self.commandSave.setGeometry(QtCore.QRect(700, 310, 131, 31))
         self.commandSave.setObjectName("commandSave")
+        font = QtGui.QFont()
+        font.setPointSize(11)
+        self.commandSave.setFont(font)
 
         self.commandSave.clicked.connect(self.saveLog)
 

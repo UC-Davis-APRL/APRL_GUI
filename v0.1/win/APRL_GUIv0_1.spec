@@ -2,7 +2,7 @@
 
 
 a = Analysis(
-    ['APRL_GUIv0_1.py'],
+    ['..\\APRL_GUIv0_1.py'],
     pathex=[],
     binaries=[],
     datas=[],

@@ -420,6 +420,11 @@ QPushButton#abortButton:checked {background-color: rgb(209, 21, 7); }</string>
       <height>31</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <pointsize>11</pointsize>
+     </font>
+    </property>
     <property name="text">
      <string>Clear</string>
     </property>
@@ -432,6 +437,11 @@ QPushButton#abortButton:checked {background-color: rgb(209, 21, 7); }</string>
       <width>131</width>
       <height>31</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>11</pointsize>
+     </font>
     </property>
     <property name="text">
      <string>Save</string>
@@ -497,7 +507,7 @@ QPushButton#abortButton:checked {background-color: rgb(209, 21, 7); }</string>
      <x>0</x>
      <y>0</y>
      <width>912</width>
-     <height>20</height>
+     <height>25</height>
     </rect>
    </property>
   </widget>

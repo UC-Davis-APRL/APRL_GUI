@@ -14,7 +14,6 @@ Types if import:
 IMPORTANT: Do NOT post this list to the issue-tracker. Use it as a basis for
             tracking down the missing module yourself. Thanks!
 
-<<<<<<< HEAD
 missing module named pyimod02_importers - imported by /mnt/c/Users/nucle/Code/APRL/GUI/env/lib/python3.10/site-packages/PyInstaller/hooks/rthooks/pyi_rth_pkgres.py (delayed), /mnt/c/Users/nucle/Code/APRL/GUI/env/lib/python3.10/site-packages/PyInstaller/hooks/rthooks/pyi_rth_pkgutil.py (delayed)
 missing module named pep517 - imported by importlib.metadata (delayed)
 missing module named 'org.python' - imported by copy (optional), xml.sax (delayed, conditional)
@@ -65,21 +64,3 @@ missing module named PySide2 - imported by qtwidgets.colorbutton.colorbutton (co
 missing module named 'PySide6.QtOpenGLWidgets' - imported by qtpy.QtWidgets (conditional, optional)
 missing module named 'PyQt6.QtOpenGLWidgets' - imported by qtpy.QtWidgets (conditional, optional)
 missing module named 'PyQt6.QtWidgets' - imported by qtpy.QtWidgets (conditional)
-=======
-missing module named 'org.python' - imported by copy (optional)
-missing module named org - imported by pickle (optional)
-missing module named pwd - imported by posixpath (delayed, conditional, optional), shutil (delayed, optional), tarfile (optional), pathlib (delayed, optional), subprocess (delayed, conditional, optional)
-missing module named grp - imported by shutil (delayed, optional), tarfile (optional), pathlib (delayed, optional), subprocess (delayed, conditional, optional)
-missing module named posix - imported by os (conditional, optional), posixpath (optional), shutil (conditional), importlib._bootstrap_external (conditional)
-missing module named resource - imported by posix (top-level)
-missing module named _frozen_importlib_external - imported by importlib._bootstrap (delayed), importlib (optional), importlib.abc (optional)
-excluded module named _frozen_importlib - imported by importlib (optional), importlib.abc (optional)
-missing module named _posixsubprocess - imported by subprocess (conditional)
-missing module named fcntl - imported by subprocess (optional), serial.serialposix (top-level)
-missing module named termios - imported by serial.serialposix (top-level)
-missing module named 'System.IO' - imported by serial.serialcli (top-level)
-missing module named System - imported by serial.serialcli (top-level)
-missing module named qtwidgets - imported by D:\Jason\Code\APRL\APRL_GUI\v0.1\APRL_GUIv0_1.py (top-level)
-missing module named 'PyQt5.QtCore' - imported by D:\Jason\Code\APRL\APRL_GUI\v0.1\APRL_GUIv0_1.py (top-level)
-missing module named PyQt5 - imported by D:\Jason\Code\APRL\APRL_GUI\v0.1\APRL_GUIv0_1.py (top-level)
->>>>>>> c9d58365fab19d0b58d86126560fc86488c0d5ec

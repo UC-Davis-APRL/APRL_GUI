@@ -2,7 +2,7 @@
 
 
 a = Analysis(
-    ['../APRL_GUIv0_1.py'],
+    ['../.linuxdist --workpath', '../.linuxbuild .APRL_GUIv0_1.py'],
     pathex=[],
     binaries=[],
     datas=[],
@@ -20,7 +20,7 @@ exe = EXE(
     a.scripts,
     [],
     exclude_binaries=True,
-    name='APRL_GUIv0_1',
+    name='.linuxdist --workpath',
     debug=False,
     bootloader_ignore_signals=False,
     strip=False,
@@ -39,5 +39,5 @@ coll = COLLECT(
     strip=False,
     upx=True,
     upx_exclude=[],
-    name='APRL_GUIv0_1',
+    name='.linuxdist --workpath',
 )

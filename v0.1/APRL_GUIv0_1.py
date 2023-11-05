@@ -355,7 +355,7 @@ class Ui_MainWindow(object):
     # Clock function for timer 
     def setClock(self):
         t = time.time()
-        self.timer.setText(f"{time.strftime('%Y-%m-%d %H:%M:%S %Z', time.localtime(t))}")
+        self.timer.setText(f"{time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(t))}")
 
     
     # Function for logging

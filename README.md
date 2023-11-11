@@ -43,7 +43,7 @@ The ```pyinstaller``` library is neccesary to compile the Python script into a W
 
 Run the following command to install neccesary packages for development.
 ```shell
-pip install pyqt5 qtwidgets serial pyinstaller
+pip install pyqt5 qtwidgets pyserial pyinstaller
 ``` 
 I also recommend you install Qt 5 Designer to be able to work on the UI. 
 

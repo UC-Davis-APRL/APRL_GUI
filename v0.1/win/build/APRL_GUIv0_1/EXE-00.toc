@@ -58,25 +58,13 @@
    'D:\\Program '
    'Files\\Python\\Lib\\site-packages\\PyInstaller\\hooks\\rthooks\\pyi_rth_inspect.py',
    'PYSOURCE'),
-  ('pyi_rth_pkgutil',
-   'D:\\Program '
-   'Files\\Python\\Lib\\site-packages\\PyInstaller\\hooks\\rthooks\\pyi_rth_pkgutil.py',
-   'PYSOURCE'),
-  ('pyi_rth_multiprocessing',
-   'D:\\Program '
-   'Files\\Python\\Lib\\site-packages\\PyInstaller\\hooks\\rthooks\\pyi_rth_multiprocessing.py',
-   'PYSOURCE'),
-  ('pyi_rth_setuptools',
-   'D:\\Program '
-   'Files\\Python\\Lib\\site-packages\\PyInstaller\\hooks\\rthooks\\pyi_rth_setuptools.py',
-   'PYSOURCE'),
   ('pyi_rth_pkgres',
    'D:\\Program '
    'Files\\Python\\Lib\\site-packages\\PyInstaller\\hooks\\rthooks\\pyi_rth_pkgres.py',
    'PYSOURCE'),
-  ('pyi_rth__tkinter',
+  ('pyi_rth_pkgutil',
    'D:\\Program '
-   'Files\\Python\\Lib\\site-packages\\PyInstaller\\hooks\\rthooks\\pyi_rth__tkinter.py',
+   'Files\\Python\\Lib\\site-packages\\PyInstaller\\hooks\\rthooks\\pyi_rth_pkgutil.py',
    'PYSOURCE'),
   ('pyi_rth_pyqt5',
    'D:\\Program '
@@ -88,7 +76,7 @@
  [],
  False,
  False,
- 1699736758,
+ 1699737471,
  [('run.exe',
    'D:\\Program '
    'Files\\Python\\Lib\\site-packages\\PyInstaller\\bootloader\\Windows-64bit-intel\\run.exe',

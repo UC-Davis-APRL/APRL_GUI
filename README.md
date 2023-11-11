@@ -1,6 +1,8 @@
 # APRL GUI 
 A frontend application for viewing engine telemetry and controlling engine systems, built in Qt 5.
 
+![A screenshot of the GUI in use](img/GUI.png)
+
 ## Index
 * [Install](#install)
     * [Stable Release](#stable-release)

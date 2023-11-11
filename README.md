@@ -1,4 +1,4 @@
-# APRL GUI 
+# APRL-GUI 
 A frontend application for viewing engine telemetry and controlling engine systems, built in Qt 5.
 
 ![A screenshot of the GUI in use](img/GUI.png)
@@ -39,13 +39,14 @@ If you are interested in contributing, message me on Discord ```(@Jason H/@nucle
 The following libraries are required for the Python script to run.
 * PyQt5
 * qtwidgets
+* qtpy
 * PySerial (serial)
 
 The ```pyinstaller``` library is neccesary to compile the Python script into a Windows executable/Linux binary depending on which OS your Python is installed in.
 
 Run the following command to install neccesary packages for development.
 ```shell
-pip install pyqt5 qtwidgets pyserial pyinstaller
+pip install pyqt5 qtwidgets qtpy pyserial pyinstaller
 ``` 
 I also recommend you install Qt 5 Designer to be able to work on the UI. 
 

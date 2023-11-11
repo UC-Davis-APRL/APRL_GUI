@@ -2,8 +2,7 @@
  True,
  False,
  True,
- 'D:\\Program '
- 'Files\\Python\\Lib\\site-packages\\PyInstaller\\bootloader\\images\\icon-console.ico',
+ 'D:\\Jason\\Code\\APRL\\env\\Lib\\site-packages\\PyInstaller\\bootloader\\images\\icon-console.ico',
  None,
  False,
  False,
@@ -51,24 +50,19 @@
    'D:\\Jason\\Code\\APRL\\APRL_GUI\\v0.1\\win\\build\\APRL_GUIv0_1\\localpycs\\pyimod04_pywin32.pyc',
    'PYMODULE'),
   ('pyiboot01_bootstrap',
-   'D:\\Program '
-   'Files\\Python\\Lib\\site-packages\\PyInstaller\\loader\\pyiboot01_bootstrap.py',
+   'D:\\Jason\\Code\\APRL\\env\\Lib\\site-packages\\PyInstaller\\loader\\pyiboot01_bootstrap.py',
    'PYSOURCE'),
   ('pyi_rth_inspect',
-   'D:\\Program '
-   'Files\\Python\\Lib\\site-packages\\PyInstaller\\hooks\\rthooks\\pyi_rth_inspect.py',
+   'D:\\Jason\\Code\\APRL\\env\\Lib\\site-packages\\PyInstaller\\hooks\\rthooks\\pyi_rth_inspect.py',
    'PYSOURCE'),
   ('pyi_rth_pkgres',
-   'D:\\Program '
-   'Files\\Python\\Lib\\site-packages\\PyInstaller\\hooks\\rthooks\\pyi_rth_pkgres.py',
+   'D:\\Jason\\Code\\APRL\\env\\Lib\\site-packages\\PyInstaller\\hooks\\rthooks\\pyi_rth_pkgres.py',
    'PYSOURCE'),
   ('pyi_rth_pkgutil',
-   'D:\\Program '
-   'Files\\Python\\Lib\\site-packages\\PyInstaller\\hooks\\rthooks\\pyi_rth_pkgutil.py',
+   'D:\\Jason\\Code\\APRL\\env\\Lib\\site-packages\\PyInstaller\\hooks\\rthooks\\pyi_rth_pkgutil.py',
    'PYSOURCE'),
   ('pyi_rth_pyqt5',
-   'D:\\Program '
-   'Files\\Python\\Lib\\site-packages\\PyInstaller\\hooks\\rthooks\\pyi_rth_pyqt5.py',
+   'D:\\Jason\\Code\\APRL\\env\\Lib\\site-packages\\PyInstaller\\hooks\\rthooks\\pyi_rth_pyqt5.py',
    'PYSOURCE'),
   ('APRL_GUIv0_1',
    'D:\\Jason\\Code\\APRL\\APRL_GUI\\v0.1\\APRL_GUIv0_1.py',
@@ -76,9 +70,8 @@
  [],
  False,
  False,
- 1699737471,
+ 1699741803,
  [('run.exe',
-   'D:\\Program '
-   'Files\\Python\\Lib\\site-packages\\PyInstaller\\bootloader\\Windows-64bit-intel\\run.exe',
+   'D:\\Jason\\Code\\APRL\\env\\Lib\\site-packages\\PyInstaller\\bootloader\\Windows-64bit-intel\\run.exe',
    'EXECUTABLE')],
  'D:\\Program Files\\Python\\python311.dll')

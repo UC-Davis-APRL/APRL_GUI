@@ -9,8 +9,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>912</width>
-    <height>777</height>
+    <width>909</width>
+    <height>775</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -530,8 +530,8 @@ QPushButton#abortButton:checked {background-color: rgb(209, 21, 7); }</string>
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>912</width>
-     <height>20</height>
+     <width>909</width>
+     <height>21</height>
     </rect>
    </property>
   </widget>

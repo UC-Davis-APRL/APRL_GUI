@@ -9,8 +9,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1453</width>
-    <height>838</height>
+    <width>938</width>
+    <height>675</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -156,44 +156,6 @@ QPushButton#purgeButton:checked {background-color: rgb(170, 255, 0);}</string>
             </item>
            </layout>
           </widget>
-         </item>
-        </layout>
-       </widget>
-      </item>
-     </layout>
-    </item>
-    <item>
-     <layout class="QVBoxLayout" name="verticalLayout_8">
-      <item>
-       <widget class="QFrame" name="frame_6">
-        <property name="frameShape">
-         <enum>QFrame::StyledPanel</enum>
-        </property>
-        <property name="frameShadow">
-         <enum>QFrame::Raised</enum>
-        </property>
-        <layout class="QVBoxLayout" name="verticalLayout_10">
-         <item alignment="Qt::AlignHCenter|Qt::AlignTop">
-          <widget class="QLabel" name="telemetryLabel">
-           <property name="text">
-            <string>Telemetry</string>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </widget>
-      </item>
-      <item>
-       <widget class="QFrame" name="frame_5">
-        <property name="frameShape">
-         <enum>QFrame::StyledPanel</enum>
-        </property>
-        <property name="frameShadow">
-         <enum>QFrame::Raised</enum>
-        </property>
-        <layout class="QVBoxLayout" name="verticalLayout_9">
-         <item>
-          <widget class="LivePlotWidget" name="widget" native="true"/>
          </item>
         </layout>
        </widget>
@@ -536,6 +498,9 @@ QPushButton#purgeButton:checked {background-color: rgb(170, 255, 0);}</string>
                 <property name="text">
                  <string>CheckBox</string>
                 </property>
+                <property name="checked">
+                 <bool>false</bool>
+                </property>
                </widget>
               </item>
               <item>
@@ -547,6 +512,9 @@ QPushButton#purgeButton:checked {background-color: rgb(170, 255, 0);}</string>
                 </property>
                 <property name="text">
                  <string>CheckBox</string>
+                </property>
+                <property name="checked">
+                 <bool>false</bool>
                 </property>
                </widget>
               </item>
@@ -634,10 +602,17 @@ QPushButton#abortButton:checked {background-color: rgb(209, 21, 7); }</string>
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1453</width>
+     <width>938</width>
      <height>20</height>
     </rect>
    </property>
+   <widget class="QMenu" name="menuShow">
+    <property name="title">
+     <string>Show</string>
+    </property>
+    <addaction name="actionTelemetry_Screen"/>
+   </widget>
+   <addaction name="menuShow"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <widget class="QToolBar" name="toolBar">
@@ -651,18 +626,17 @@ QPushButton#abortButton:checked {background-color: rgb(209, 21, 7); }</string>
     <bool>false</bool>
    </attribute>
   </widget>
+  <action name="actionTelemetry_Screen">
+   <property name="text">
+    <string>Telemetry Screen</string>
+   </property>
+  </action>
  </widget>
  <customwidgets>
   <customwidget>
    <class>AnimatedToggle</class>
    <extends>QCheckBox</extends>
    <header>qtwidgets</header>
-  </customwidget>
-  <customwidget>
-   <class>LivePlotWidget</class>
-   <extends>QWidget</extends>
-   <header>pglive.sources.live_plot_widget</header>
-   <container>1</container>
   </customwidget>
  </customwidgets>
  <resources/>

@@ -66,5 +66,7 @@ Thumbs.db
 # Python byte code
 *.pyc
 
-# dev.py file is used for merging changes to APRL_GUIv0_1.py without overwriting the file
-**/dev.py
+# SQL database files for telemetry storage
+*.db
+*.db-journal
+

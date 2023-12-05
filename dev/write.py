@@ -15,7 +15,7 @@ connect = serial.Serial(serial.tools.list_ports.comports()[i].device, 250000, ti
 
 
 
-con = sql.connect("telemetry.db")
+con = sql.connect("test.db")
 cur = con.cursor()
 
 '''

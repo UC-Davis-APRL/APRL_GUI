@@ -96,8 +96,10 @@ class MainWindow(QtWidgets.QMainWindow):
         self.connection = serial.Serial(self.arduino_path, 250000, timeout=1)    
 
         # Initialize the database connection
-        self.database = sql.connect("test.db", check_same_thread=False)
-        self.writecursor = self.database.cursor()
+        self.readdatabase = sql.connect("telemetry.db", check_same_thread=False)
+        self.writedatabase = sql.connect("telemetry.db", check_same_thread=False)
+        self.writecursor = self.writedatabase.cursor()
+        self.writecursor.execute("PRAGMA journal_mode=wal")
         self.writecursor.execute("CREATE TABLE IF NOT EXISTS data(time, NitroT, LOXIso, KeroIso, LOXMani, KeroMani, LOXFlow, KeroFlow, engine)")
 
 
@@ -288,21 +290,24 @@ class MainWindow(QtWidgets.QMainWindow):
     def telemetry_writer(self):
         while(self.running):
             input = self.connection.readline()
+            
+            
             try:
                 nitrot, loxi, keroi, loxman, keroman, loxf, kerof, engine = input.decode('utf-8').strip().split()
                 #print(f"INSERT INTO data VALUES ({time.time()}, {nitrot}, {loxi}, {keroi}, {loxman}, {keroman}, {loxf}, {kerof}, {engine});")
                 self.writecursor.execute(f"INSERT INTO data VALUES ({time.time()}, {nitrot}, {loxi}, {keroi}, {loxman}, {keroman}, {loxf}, {kerof}, {engine});")
-                self.writecursor.commit()
-                #print("good insert")
+                self.writedatabase.commit()
+                print("good insert")
             except:
-                #print("reliable protocol lmao")
+                print("reliable protocol lmao")
                 continue
+           
     
 
 
     def telemetry_collector(self, connector, index):
         while self.running:
-            self.readcursor = self.database.cursor()
+            self.readcursor = self.readdatabase.cursor()
             self.output = self.readcursor.execute("SELECT * FROM data ORDER BY time DESC LIMIT 1;")
             for x in self.output:                              
                 volts = (5.0 / 8388608)* float(x[index])
@@ -316,6 +321,10 @@ class MainWindow(QtWidgets.QMainWindow):
 
     def closeEvent(self, event):
         self.running = False
+        sleep(0.2)
+        self.readdatabase.close()
+        self.writedatabase.close()
+        QtWidgets.QApplication.quit()
 
 
 if __name__ == '__main__':

@@ -69,4 +69,4 @@ Thumbs.db
 # SQL database files for telemetry storage
 *.db
 *.db-journal
-
+*.csv

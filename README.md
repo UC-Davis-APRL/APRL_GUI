@@ -41,12 +41,15 @@ The following libraries are required for the Python script to run.
 * qtwidgets
 * qtpy
 * PySerial (serial)
+* pglive
+* pyqtgraph
+* pandas
 
 The ```pyinstaller``` library is neccesary to compile the Python script into a Windows executable/Linux binary depending on which OS your Python is installed in.
 
 Run the following command to install neccesary packages for development.
 ```shell
-pip install pyqt5 qtwidgets qtpy pyserial pyinstaller
+pip install pyqt5 qtwidgets qtpy pyserial pglive pandas pyinstaller 
 ``` 
 I also recommend you install Qt 5 Designer to be able to work on the UI. 
 
@@ -61,9 +64,4 @@ To compile the ```.ui``` file into a runnable Python script, run
 pyuic5 -x APRL_GUIvX_X.ui -o name_of_output_file.py
 ```
 
-Please regard the following warning in the auto-generated files:
-```python
-# WARNING! All changes made in this file will be lost!
-```
-Don't overwrite the ```APRL_GUIvX_X.py``` file! All the custom control code that gives the script its functionality will be lost if you overwrite it. Instead, write any new changes to the UI to a ```dev.py``` file, and merge the changes manually. I am looking at better ways to do this, but for now please do it this way.
-
+All functionality for the program is contained in the ```controls.py``` file; to include your compiled UI file in the program, put the file in an import statement.

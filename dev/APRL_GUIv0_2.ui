@@ -62,6 +62,58 @@
         </layout>
        </widget>
       </item>
+      <item>
+       <widget class="QFrame" name="frame_5">
+        <property name="frameShape">
+         <enum>QFrame::StyledPanel</enum>
+        </property>
+        <property name="frameShadow">
+         <enum>QFrame::Raised</enum>
+        </property>
+        <layout class="QVBoxLayout" name="verticalLayout_8">
+         <item alignment="Qt::AlignHCenter">
+          <widget class="QLabel" name="databaseInfo">
+           <property name="text">
+            <string>Not Connected To Database</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QFrame" name="frame_6">
+           <property name="frameShape">
+            <enum>QFrame::StyledPanel</enum>
+           </property>
+           <property name="frameShadow">
+            <enum>QFrame::Raised</enum>
+           </property>
+           <layout class="QHBoxLayout" name="horizontalLayout_6">
+            <item>
+             <widget class="QPushButton" name="openStart">
+              <property name="text">
+               <string>Open/Start Recording</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="stopClose">
+              <property name="text">
+               <string>Close/Stop Recording</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="exportFrom">
+              <property name="text">
+               <string>Export to csv</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
       <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
        <widget class="QFrame" name="frame_2">
         <property name="frameShape">

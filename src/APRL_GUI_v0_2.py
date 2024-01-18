@@ -1,4 +1,5 @@
 # Required Qt5 libraries
+from re import I
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtCore import Qt, QTimer
 
@@ -100,13 +101,16 @@ class MainWindow(QtWidgets.QMainWindow):
 
         # Initialize the serial connection
         self.arduino_path = serial.tools.list_ports.comports()[0].device
-        self.connection = serial.Serial(self.arduino_path, 250000, timeout=1)    
+        self.connection = serial.Serial(self.arduino_path, 250000, timeout=1)
+        self.connection.reset_output_buffer() # Nuke the output buffer in case crap is leftover from other instances
 
         # Initialize the graphs
         self.running = False
+
         self.tele.nitroGraph.setTitle("Nitrogen Tank Pressure")
         self.tele.nitroGraph.setLabel("left", "Pressure", units="PSI")
-        self.tele.nitroGraph.y_range_controller=LiveAxisRange(fixed_range=[0, 1500])
+        self.tele.nitroGraph.setAxisItems({'bottom': pyqtgraph.DateAxisItem()})
+        self.tele.nitroGraph.y_range_controller=LiveAxisRange(fixed_range=[0, 3000])
         self.tele.nitroPen = pyqtgraph.mkPen('#2DFE54', width=2)
         self.tele.nitroLine = LiveLinePlot(pen=self.tele.nitroPen)
         self.tele.nitroGraph.addItem(self.tele.nitroLine)
@@ -115,6 +119,7 @@ class MainWindow(QtWidgets.QMainWindow):
         
         self.tele.tankGraph.setTitle("Kerosene / LOX Tank Pressures")
         self.tele.tankGraph.setLabel("left", "Pressure", units="PSI")
+        self.tele.tankGraph.setAxisItems({'bottom': pyqtgraph.DateAxisItem()})
         self.tele.tankGraph.y_range_controller=LiveAxisRange(fixed_range=[0,1000])
         
         self.tele.keroPen = pyqtgraph.mkPen('#FF6700', width=2)
@@ -130,6 +135,7 @@ class MainWindow(QtWidgets.QMainWindow):
 
         self.tele.manifoldGraph.setTitle("Kerosene / LOX Manifold Pressures")
         self.tele.manifoldGraph.setLabel("left", "Pressure", units="PSI")
+        self.tele.manifoldGraph.setAxisItems({'bottom': pyqtgraph.DateAxisItem()})
         self.tele.manifoldGraph.y_range_controller=LiveAxisRange(fixed_range=[0,900])
 
         self.tele.keroInjLine = LiveLinePlot(pen=self.tele.keroPen)
@@ -143,6 +149,7 @@ class MainWindow(QtWidgets.QMainWindow):
         
         self.tele.flowGraph.setTitle("Kerosene / LOX Flow Rates")
         self.tele.flowGraph.setLabel("left", "Flow Rate", units="L/min")
+        self.tele.flowGraph.setAxisItems({'bottom': pyqtgraph.DateAxisItem()})
         self.tele.flowGraph.y_range_controller=LiveAxisRange(fixed_range=[0,25])
         
 
@@ -153,6 +160,11 @@ class MainWindow(QtWidgets.QMainWindow):
         self.tele.loxFlow = LiveLinePlot(pen=self.tele.loxPen)
         self.tele.flowGraph.addItem(self.tele.loxFlow)
         self.loxFlowConnector = DataConnector(self.tele.loxFlow, max_points=100, update_rate=5)
+
+        # Lock the controls
+        self.enableControls(self.running)        
+
+
 
     # Enables the ABORT button when ARM is pressed 
     def armAbort(self):
@@ -233,29 +245,35 @@ class MainWindow(QtWidgets.QMainWindow):
 
                 # Update button state
                 self.ui.isoTog1.toggle()
-                QTimer.singleShot(1000, lambda: self.ui.isoTog1.toggle())
+                self.ui.isoTog2.toggle()      
+                self.ui.mainTog1.toggle()      
+                self.ui.mainTog2.toggle()      
+                self.ui.ventTog1.toggle()
+                self.ui.ventTog2.toggle()   
 
-                QTimer.singleShot(1000, lambda: self.ui.isoTog2.toggle())      
-                QTimer.singleShot(2000, lambda: self.ui.isoTog2.toggle())
-
-                QTimer.singleShot(2000, lambda: self.ui.mainTog1.toggle())      
-                QTimer.singleShot(3000, lambda: self.ui.mainTog1.toggle())
-
-                QTimer.singleShot(3000, lambda: self.ui.mainTog2.toggle())      
-                QTimer.singleShot(4000, lambda: self.ui.mainTog2.toggle())
-
-                QTimer.singleShot(4000, lambda: self.ui.ventTog1.toggle())      
+                QTimer.singleShot(5000, lambda: self.ui.isoTog1.toggle())
+                QTimer.singleShot(5000, lambda: self.ui.isoTog2.toggle())
+                QTimer.singleShot(5000, lambda: self.ui.mainTog1.toggle())                      
+                QTimer.singleShot(5000, lambda: self.ui.mainTog2.toggle())
                 QTimer.singleShot(5000, lambda: self.ui.ventTog1.toggle())
-
-                QTimer.singleShot(5000, lambda: self.ui.ventTog2.toggle())      
-                QTimer.singleShot(6000, lambda: self.ui.ventTog2.toggle())
+                QTimer.singleShot(5000, lambda: self.ui.ventTog2.toggle())
                  
 
                 
             case "Engine startup":
                 self.connection.write(b'8\n')
+                
+                # Open mains, fire 5 seconds
                 self.ui.mainTog1.toggle()
                 self.ui.mainTog2.toggle()
+
+                # Close mains + isol, open vent 
+                QTimer.singleShot(5000, lambda: self.ui.isoTog1.toggle())
+                QTimer.singleShot(5000, lambda: self.ui.isoTog2.toggle())
+                QTimer.singleShot(5000, lambda: self.ui.mainTog1.toggle())                      
+                QTimer.singleShot(5000, lambda: self.ui.mainTog2.toggle())
+                QTimer.singleShot(5000, lambda: self.ui.ventTog1.toggle())
+                QTimer.singleShot(5000, lambda: self.ui.ventTog2.toggle())
 
 
             # NO LEAK CHECK IN INO CODE YET
@@ -266,11 +284,15 @@ class MainWindow(QtWidgets.QMainWindow):
                 self.connection.write(b"10\n")
                 self.ui.isoTog1.toggle()
                 self.ui.isoTog2.toggle()
+                self.ui.ventTog1.toggle()
+                self.ui.ventTog2.toggle()
                 
 
         
-        
-        
+    def enableControls(self, isRunning):
+        # Lock out the controls when serial connection is not open so it doesn't crash
+        self.ui.valveBox.setEnabled(isRunning)
+        self.ui.commandBox.setEnabled(isRunning)
 
 
     def saveLog(self):
@@ -289,6 +311,8 @@ class MainWindow(QtWidgets.QMainWindow):
 
     def connect_database(self):
 
+        
+
         # Get the database file name
         fileName, filter = QtWidgets.QFileDialog.getSaveFileName(None, "Database file", None, "(*.db)")
 
@@ -299,6 +323,9 @@ class MainWindow(QtWidgets.QMainWindow):
         self.writecursor.execute("PRAGMA journal_mode=wal")
         self.writecursor.execute("CREATE TABLE IF NOT EXISTS data(time, NitroT, LOXIso, KeroIso, LOXMani, KeroMani, LOXFlow, KeroFlow, engine)")
         self.running = True
+
+        # Unlock controls
+        self.enableControls(self.running)
 
         self.ui.databaseInfo.setText(f"Connected to: {fileName}")
 
@@ -317,6 +344,7 @@ class MainWindow(QtWidgets.QMainWindow):
         self.readdatabase.close()
         self.writedatabase.close()
         self.running=False
+        self.enableControls(self.running)
         self.ui.databaseInfo.setText(f"Not Connected To Database")
 
     def export_database(self):
@@ -375,7 +403,7 @@ class MainWindow(QtWidgets.QMainWindow):
             sleep(0.2)
             self.readdatabase.close()
             self.writedatabase.close()
-        
+        self.connection.close() 
         QtWidgets.QApplication.quit()
 
 

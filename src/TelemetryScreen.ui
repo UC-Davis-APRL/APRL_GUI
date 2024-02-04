@@ -46,9 +46,9 @@
         </property>
         <layout class="QHBoxLayout" name="horizontalLayout_6">
          <item>
-          <widget class="QLabel" name="purgeIndicator">
+          <widget class="QLabel" name="nitroPressure">
            <property name="text">
-            <string>Purge</string>
+            <string>Nitrogen Tank Pressure: </string>
            </property>
           </widget>
          </item>
@@ -103,16 +103,9 @@
         </property>
         <layout class="QHBoxLayout" name="horizontalLayout_2">
          <item>
-          <widget class="QLabel" name="keroIsolIndicator">
+          <widget class="QLabel" name="keroPressure">
            <property name="text">
-            <string>Kero Isol</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLabel" name="loxIsolIndicator">
-           <property name="text">
-            <string>LOX Isol</string>
+            <string>Kero Tank Pressure: </string>
            </property>
           </widget>
          </item>
@@ -129,16 +122,9 @@
         </property>
         <layout class="QHBoxLayout" name="horizontalLayout_3">
          <item>
-          <widget class="QLabel" name="keroVentIndicator">
+          <widget class="QLabel" name="LOXPressure">
            <property name="text">
-            <string>Kero Vent</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLabel" name="loxVentIndicator">
-           <property name="text">
-            <string>LOX Vent</string>
+            <string>LOX Tank Pressure:</string>
            </property>
           </widget>
          </item>
@@ -177,32 +163,6 @@
           <widget class="QLabel" name="telemetryLabel_9">
            <property name="text">
             <string>Engine</string>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </widget>
-      </item>
-      <item alignment="Qt::AlignVCenter">
-       <widget class="QFrame" name="frame_3">
-        <property name="frameShape">
-         <enum>QFrame::StyledPanel</enum>
-        </property>
-        <property name="frameShadow">
-         <enum>QFrame::Raised</enum>
-        </property>
-        <layout class="QHBoxLayout" name="horizontalLayout_5">
-         <item>
-          <widget class="QLabel" name="keroMainIndicator">
-           <property name="text">
-            <string>Kero Main</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLabel" name="loxMainIndicator">
-           <property name="text">
-            <string>LOX Main</string>
            </property>
           </widget>
          </item>

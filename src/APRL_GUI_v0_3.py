@@ -227,7 +227,7 @@ class MainWindow(QtWidgets.QMainWindow):
                 self.connection.write(b'6\n')
 
             case "Engine purge valve (K7)":
-                self.connection.write(b'9\n')
+                self.connection.write(b'7\n')
                 
             
     
@@ -241,7 +241,7 @@ class MainWindow(QtWidgets.QMainWindow):
 
         match(name):
             case "Valve calibration":
-                self.connection.write(b'7\n')
+                self.connection.write(b'11\n')
 
                 # Update button state
                 self.ui.isoTog1.toggle()
@@ -261,7 +261,7 @@ class MainWindow(QtWidgets.QMainWindow):
 
                 
             case "Engine startup":
-                self.connection.write(b'8\n')
+                self.connection.write(b'14\n')
                 
                 # Open mains, fire 5 seconds
                 self.ui.mainTog1.toggle()
@@ -281,7 +281,7 @@ class MainWindow(QtWidgets.QMainWindow):
                 self.connection.write(b'\n')
 
             case "Pressurize tanks":
-                self.connection.write(b"10\n")
+                self.connection.write(b"12\n")
                 self.ui.isoTog1.toggle()
                 self.ui.isoTog2.toggle()
                 self.ui.ventTog1.toggle()
@@ -312,7 +312,6 @@ class MainWindow(QtWidgets.QMainWindow):
     def connect_database(self):
 
         
-
         # Get the database file name
         fileName, filter = QtWidgets.QFileDialog.getSaveFileName(None, "Database file", None, "(*.db)")
 
@@ -389,13 +388,20 @@ class MainWindow(QtWidgets.QMainWindow):
                     reading = ((volts - 0.48) / 1.92) * 20
                 else:
                     reading = ((volts - 0.48) / 1.92) * 1000
-                
-                print(volts)
-                print(reading)
 
                 connector.cb_append_data_point(reading, x[0])
+
+                if index < 4:
+                    self.showTelemetryValues(index, reading)
+
             sleep(0.2)
-     
+    
+    
+    # Write to the right label
+    def showTelemetryValues(self, index, value):
+        fields = [self.tele.nitroPressure, self.tele.keroPressure, self.tele.LOXPressure]
+        names = ["Nitrogen Tank Pressure: ", "Kerosene Tank Pressure: ", "LOX Tank Pressure: "]
+        fields[index - 1].setText(f"{names[index - 1]}{value}")
 
     def closeEvent(self, event):
         if self.running:

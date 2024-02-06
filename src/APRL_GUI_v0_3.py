@@ -1,5 +1,4 @@
 # Required Qt5 libraries
-from re import I
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtCore import Qt, QTimer
 
@@ -21,6 +20,7 @@ import pyqtgraph
 
 # Threading library for multi-thread plotting
 from threading import Thread
+import concurrent.futures
 
 # Library for SQL access
 import sqlite3 as sql
@@ -329,14 +329,7 @@ class MainWindow(QtWidgets.QMainWindow):
         self.ui.databaseInfo.setText(f"Connected to: {fileName}")
 
         Thread(target=self.telemetry_writer).start()
-        Thread(target=self.telemetry_collector, args=(self.nitroConnector, 1)).start()
-        Thread(target=self.telemetry_collector, args=(self.loxTankConnector, 2)).start()
-        Thread(target=self.telemetry_collector, args=(self.keroTankConnector, 3)).start()
-        Thread(target=self.telemetry_collector, args=(self.loxInjConnector, 4)).start()
-        Thread(target=self.telemetry_collector, args=(self.keroInjConnector, 5)).start()
-        Thread(target=self.telemetry_collector, args=(self.loxFlowConnector, 6)).start()
-        Thread(target=self.telemetry_collector, args=(self.keroFlowConnector, 7)).start()
-        Thread(target=self.telemetry_collector, args=(None, 8)).start()
+        Thread(target=self.telemetry_collector).start()
 
 
     def close_database(self):
@@ -372,16 +365,18 @@ class MainWindow(QtWidgets.QMainWindow):
                 #print("reliable protocol lmao")
                 continue
            
-    
 
 
-    def telemetry_collector(self, connector, index):
+    def telemetry_collector(self):
         while self.running:
+            
+            connectors = [self.nitroConnector, self.loxTankConnector, self.keroTankConnector, self.loxInjConnector, self.keroInjConnector, self.loxFlowConnector, self.keroFlowConnector]
+
             self.readcursor = self.readdatabase.cursor()
-            self.output = self.readcursor.execute("SELECT * FROM data ORDER BY time DESC LIMIT 1;")
-            for x in self.output:                              
+            self.output = self.readcursor.execute("SELECT * FROM data ORDER BY time DESC LIMIT 1;").fetchall()[0]
+            for index in range(1, 9):                              
                 #volts = (5.0 / 8388608) * float(x[index])
-                volts = float(x[index])
+                volts = float(self.output[index])
                 if index == 1:
                     reading = ((volts - 0.48) / 1.92) * 3000
                 elif index == 6 or index == 7:
@@ -390,16 +385,20 @@ class MainWindow(QtWidgets.QMainWindow):
                     reading = ((volts - 0.48) / 1.92) * 1000
 
                 if index < 8:
-                    connector.cb_append_data_point(reading, x[0])
+                    connectors[index - 1].cb_append_data_point(reading, self.output[0])
 
                 if index == 8:
-                    self.showTelemetryValues(4, reading)
-                    print("index 8 called")
+                    self.showTelemetryValues(4, round(reading, 3))
+                    #print("index 8 called")
                 elif index < 4:
-                    self.showTelemetryValues(index, reading)
+                    self.showTelemetryValues(index, round(reading, 3))
 
             sleep(0.2)
     
+
+    #def telemetry_plotter(self, connector, index)
+
+
     
     # Write to the right label
     def showTelemetryValues(self, index, value):

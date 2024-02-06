@@ -227,7 +227,7 @@ class MainWindow(QtWidgets.QMainWindow):
                 self.connection.write(b'6\n')
 
             case "Engine purge valve (K7)":
-                self.connection.write(b'7\n')
+                self.connection.write(b'13\n')
                 
             
     
@@ -336,7 +336,7 @@ class MainWindow(QtWidgets.QMainWindow):
         Thread(target=self.telemetry_collector, args=(self.keroInjConnector, 5)).start()
         Thread(target=self.telemetry_collector, args=(self.loxFlowConnector, 6)).start()
         Thread(target=self.telemetry_collector, args=(self.keroFlowConnector, 7)).start()
- 
+        Thread(target=self.telemetry_collector, args=(None, 8)).start()
 
 
     def close_database(self):
@@ -367,9 +367,9 @@ class MainWindow(QtWidgets.QMainWindow):
                 #print(f"INSERT INTO data VALUES ({time.time()}, {nitrot}, {loxi}, {keroi}, {loxman}, {keroman}, {loxf}, {kerof}, {engine});")
                 self.writecursor.execute(f"INSERT INTO data VALUES ({time.time()}, {nitrot}, {loxi}, {keroi}, {loxman}, {keroman}, {loxf}, {kerof}, {engine});")
                 self.writedatabase.commit()
-                print("good insert")
+                #print("good insert")
             except:
-                print("reliable protocol lmao")
+                #print("reliable protocol lmao")
                 continue
            
     
@@ -389,9 +389,13 @@ class MainWindow(QtWidgets.QMainWindow):
                 else:
                     reading = ((volts - 0.48) / 1.92) * 1000
 
-                connector.cb_append_data_point(reading, x[0])
+                if index < 8:
+                    connector.cb_append_data_point(reading, x[0])
 
-                if index < 4:
+                if index == 8:
+                    self.showTelemetryValues(4, reading)
+                    print("index 8 called")
+                elif index < 4:
                     self.showTelemetryValues(index, reading)
 
             sleep(0.2)
@@ -399,8 +403,8 @@ class MainWindow(QtWidgets.QMainWindow):
     
     # Write to the right label
     def showTelemetryValues(self, index, value):
-        fields = [self.tele.nitroPressure, self.tele.keroPressure, self.tele.LOXPressure]
-        names = ["Nitrogen Tank Pressure: ", "Kerosene Tank Pressure: ", "LOX Tank Pressure: "]
+        fields = [self.tele.nitroPressure, self.tele.LOXPressure, self.tele.keroPressure, self.tele.DomePressure]
+        names = ["Nitrogen Tank Pressure: ", "LOX Pressure: ", "Kerosene Tank Pressure: ", "Dome Pressure: "]
         fields[index - 1].setText(f"{names[index - 1]}{value}")
 
     def closeEvent(self, event):

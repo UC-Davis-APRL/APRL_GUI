@@ -132,6 +132,25 @@
        </widget>
       </item>
       <item>
+       <widget class="QFrame" name="frame_3">
+        <property name="frameShape">
+         <enum>QFrame::StyledPanel</enum>
+        </property>
+        <property name="frameShadow">
+         <enum>QFrame::Raised</enum>
+        </property>
+        <layout class="QHBoxLayout" name="horizontalLayout_7">
+         <item>
+          <widget class="QLabel" name="DomePressure">
+           <property name="text">
+            <string>Dome Pressure:</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item>
        <widget class="QFrame" name="frame_11">
         <property name="frameShape">
          <enum>QFrame::StyledPanel</enum>

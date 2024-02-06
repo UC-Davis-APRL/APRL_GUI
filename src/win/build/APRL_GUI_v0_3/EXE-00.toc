@@ -62,10 +62,6 @@
    'D:\\Program '
    'Files\\Python\\Lib\\site-packages\\PyInstaller\\hooks\\rthooks\\pyi_rth_pkgutil.py',
    'PYSOURCE'),
-  ('pyi_rth_multiprocessing',
-   'D:\\Program '
-   'Files\\Python\\Lib\\site-packages\\PyInstaller\\hooks\\rthooks\\pyi_rth_multiprocessing.py',
-   'PYSOURCE'),
   ('pyi_rth_pkgres',
    'D:\\Program '
    'Files\\Python\\Lib\\site-packages\\PyInstaller\\hooks\\rthooks\\pyi_rth_pkgres.py',
@@ -77,6 +73,10 @@
   ('pyi_rth_traitlets',
    'D:\\Program '
    'Files\\Python\\Lib\\site-packages\\_pyinstaller_hooks_contrib\\hooks\\rthooks\\pyi_rth_traitlets.py',
+   'PYSOURCE'),
+  ('pyi_rth_multiprocessing',
+   'D:\\Program '
+   'Files\\Python\\Lib\\site-packages\\PyInstaller\\hooks\\rthooks\\pyi_rth_multiprocessing.py',
    'PYSOURCE'),
   ('pyi_rth_mplconfig',
    'D:\\Program '
@@ -100,7 +100,7 @@
  [],
  False,
  False,
- 1707083788,
+ 1707260213,
  [('run.exe',
    'D:\\Program '
    'Files\\Python\\Lib\\site-packages\\PyInstaller\\bootloader\\Windows-64bit-intel\\run.exe',

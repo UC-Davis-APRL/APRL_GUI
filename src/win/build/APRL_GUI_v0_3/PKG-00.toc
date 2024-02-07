@@ -39,6 +39,10 @@
    'D:\\Program '
    'Files\\Python\\Lib\\site-packages\\PyInstaller\\hooks\\rthooks\\pyi_rth_pkgutil.py',
    'PYSOURCE'),
+  ('pyi_rth_multiprocessing',
+   'D:\\Program '
+   'Files\\Python\\Lib\\site-packages\\PyInstaller\\hooks\\rthooks\\pyi_rth_multiprocessing.py',
+   'PYSOURCE'),
   ('pyi_rth_pkgres',
    'D:\\Program '
    'Files\\Python\\Lib\\site-packages\\PyInstaller\\hooks\\rthooks\\pyi_rth_pkgres.py',
@@ -51,17 +55,13 @@
    'D:\\Program '
    'Files\\Python\\Lib\\site-packages\\_pyinstaller_hooks_contrib\\hooks\\rthooks\\pyi_rth_traitlets.py',
    'PYSOURCE'),
-  ('pyi_rth_multiprocessing',
+  ('pyi_rth__tkinter',
    'D:\\Program '
-   'Files\\Python\\Lib\\site-packages\\PyInstaller\\hooks\\rthooks\\pyi_rth_multiprocessing.py',
+   'Files\\Python\\Lib\\site-packages\\PyInstaller\\hooks\\rthooks\\pyi_rth__tkinter.py',
    'PYSOURCE'),
   ('pyi_rth_mplconfig',
    'D:\\Program '
    'Files\\Python\\Lib\\site-packages\\PyInstaller\\hooks\\rthooks\\pyi_rth_mplconfig.py',
-   'PYSOURCE'),
-  ('pyi_rth__tkinter',
-   'D:\\Program '
-   'Files\\Python\\Lib\\site-packages\\PyInstaller\\hooks\\rthooks\\pyi_rth__tkinter.py',
    'PYSOURCE'),
   ('pyi_rth_pyqtgraph_multiprocess',
    'D:\\Program '

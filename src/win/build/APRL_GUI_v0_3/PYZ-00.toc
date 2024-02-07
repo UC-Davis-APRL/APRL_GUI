@@ -2980,10 +2980,6 @@
   ('pandas._testing._io',
    'D:\\Program Files\\Python\\Lib\\site-packages\\pandas\\_testing\\_io.py',
    'PYMODULE'),
-  ('pandas._testing._random',
-   'D:\\Program '
-   'Files\\Python\\Lib\\site-packages\\pandas\\_testing\\_random.py',
-   'PYMODULE'),
   ('pandas._testing._warnings',
    'D:\\Program '
    'Files\\Python\\Lib\\site-packages\\pandas\\_testing\\_warnings.py',
@@ -3005,6 +3001,9 @@
   ('pandas._version',
    'D:\\Program Files\\Python\\Lib\\site-packages\\pandas\\_version.py',
    'PYMODULE'),
+  ('pandas._version_meson',
+   'D:\\Program Files\\Python\\Lib\\site-packages\\pandas\\_version_meson.py',
+   'PYMODULE'),
   ('pandas.api',
    'D:\\Program Files\\Python\\Lib\\site-packages\\pandas\\api\\__init__.py',
    'PYMODULE'),
@@ -3024,18 +3023,27 @@
    'D:\\Program '
    'Files\\Python\\Lib\\site-packages\\pandas\\api\\types\\__init__.py',
    'PYMODULE'),
+  ('pandas.api.typing',
+   'D:\\Program '
+   'Files\\Python\\Lib\\site-packages\\pandas\\api\\typing\\__init__.py',
+   'PYMODULE'),
   ('pandas.arrays',
    'D:\\Program Files\\Python\\Lib\\site-packages\\pandas\\arrays\\__init__.py',
    'PYMODULE'),
   ('pandas.compat',
    'D:\\Program Files\\Python\\Lib\\site-packages\\pandas\\compat\\__init__.py',
    'PYMODULE'),
+  ('pandas.compat._constants',
+   'D:\\Program '
+   'Files\\Python\\Lib\\site-packages\\pandas\\compat\\_constants.py',
+   'PYMODULE'),
   ('pandas.compat._optional',
    'D:\\Program '
    'Files\\Python\\Lib\\site-packages\\pandas\\compat\\_optional.py',
    'PYMODULE'),
-  ('pandas.compat.chainmap',
-   'D:\\Program Files\\Python\\Lib\\site-packages\\pandas\\compat\\chainmap.py',
+  ('pandas.compat.compressors',
+   'D:\\Program '
+   'Files\\Python\\Lib\\site-packages\\pandas\\compat\\compressors.py',
    'PYMODULE'),
   ('pandas.compat.numpy',
    'D:\\Program '
@@ -3103,6 +3111,14 @@
    'D:\\Program '
    'Files\\Python\\Lib\\site-packages\\pandas\\core\\array_algos\\__init__.py',
    'PYMODULE'),
+  ('pandas.core.array_algos.datetimelike_accumulations',
+   'D:\\Program '
+   'Files\\Python\\Lib\\site-packages\\pandas\\core\\array_algos\\datetimelike_accumulations.py',
+   'PYMODULE'),
+  ('pandas.core.array_algos.masked_accumulations',
+   'D:\\Program '
+   'Files\\Python\\Lib\\site-packages\\pandas\\core\\array_algos\\masked_accumulations.py',
+   'PYMODULE'),
   ('pandas.core.array_algos.masked_reductions',
    'D:\\Program '
    'Files\\Python\\Lib\\site-packages\\pandas\\core\\array_algos\\masked_reductions.py',
@@ -3134,6 +3150,10 @@
    'D:\\Program '
    'Files\\Python\\Lib\\site-packages\\pandas\\core\\arrays\\__init__.py',
    'PYMODULE'),
+  ('pandas.core.arrays._arrow_string_mixins',
+   'D:\\Program '
+   'Files\\Python\\Lib\\site-packages\\pandas\\core\\arrays\\_arrow_string_mixins.py',
+   'PYMODULE'),
   ('pandas.core.arrays._mixins',
    'D:\\Program '
    'Files\\Python\\Lib\\site-packages\\pandas\\core\\arrays\\_mixins.py',
@@ -3153,10 +3173,6 @@
   ('pandas.core.arrays.arrow.array',
    'D:\\Program '
    'Files\\Python\\Lib\\site-packages\\pandas\\core\\arrays\\arrow\\array.py',
-   'PYMODULE'),
-  ('pandas.core.arrays.arrow.dtype',
-   'D:\\Program '
-   'Files\\Python\\Lib\\site-packages\\pandas\\core\\arrays\\arrow\\dtype.py',
    'PYMODULE'),
   ('pandas.core.arrays.arrow.extension_types',
    'D:\\Program '
@@ -3221,10 +3237,6 @@
   ('pandas.core.arrays.sparse.array',
    'D:\\Program '
    'Files\\Python\\Lib\\site-packages\\pandas\\core\\arrays\\sparse\\array.py',
-   'PYMODULE'),
-  ('pandas.core.arrays.sparse.dtype',
-   'D:\\Program '
-   'Files\\Python\\Lib\\site-packages\\pandas\\core\\arrays\\sparse\\dtype.py',
    'PYMODULE'),
   ('pandas.core.arrays.sparse.scipy_sparse',
    'D:\\Program '
@@ -3307,9 +3319,6 @@
   ('pandas.core.construction',
    'D:\\Program '
    'Files\\Python\\Lib\\site-packages\\pandas\\core\\construction.py',
-   'PYMODULE'),
-  ('pandas.core.describe',
-   'D:\\Program Files\\Python\\Lib\\site-packages\\pandas\\core\\describe.py',
    'PYMODULE'),
   ('pandas.core.dtypes',
    'D:\\Program '
@@ -3456,10 +3465,6 @@
    'D:\\Program '
    'Files\\Python\\Lib\\site-packages\\pandas\\core\\indexes\\multi.py',
    'PYMODULE'),
-  ('pandas.core.indexes.numeric',
-   'D:\\Program '
-   'Files\\Python\\Lib\\site-packages\\pandas\\core\\indexes\\numeric.py',
-   'PYMODULE'),
   ('pandas.core.indexes.period',
    'D:\\Program '
    'Files\\Python\\Lib\\site-packages\\pandas\\core\\indexes\\period.py',
@@ -3539,6 +3544,22 @@
    'D:\\Program '
    'Files\\Python\\Lib\\site-packages\\pandas\\core\\internals\\ops.py',
    'PYMODULE'),
+  ('pandas.core.methods',
+   'D:\\Program '
+   'Files\\Python\\Lib\\site-packages\\pandas\\core\\methods\\__init__.py',
+   'PYMODULE'),
+  ('pandas.core.methods.describe',
+   'D:\\Program '
+   'Files\\Python\\Lib\\site-packages\\pandas\\core\\methods\\describe.py',
+   'PYMODULE'),
+  ('pandas.core.methods.selectn',
+   'D:\\Program '
+   'Files\\Python\\Lib\\site-packages\\pandas\\core\\methods\\selectn.py',
+   'PYMODULE'),
+  ('pandas.core.methods.to_dict',
+   'D:\\Program '
+   'Files\\Python\\Lib\\site-packages\\pandas\\core\\methods\\to_dict.py',
+   'PYMODULE'),
   ('pandas.core.missing',
    'D:\\Program Files\\Python\\Lib\\site-packages\\pandas\\core\\missing.py',
    'PYMODULE'),
@@ -3572,10 +3593,6 @@
   ('pandas.core.ops.mask_ops',
    'D:\\Program '
    'Files\\Python\\Lib\\site-packages\\pandas\\core\\ops\\mask_ops.py',
-   'PYMODULE'),
-  ('pandas.core.ops.methods',
-   'D:\\Program '
-   'Files\\Python\\Lib\\site-packages\\pandas\\core\\ops\\methods.py',
    'PYMODULE'),
   ('pandas.core.ops.missing',
    'D:\\Program '
@@ -3726,6 +3743,9 @@
   ('pandas.io',
    'D:\\Program Files\\Python\\Lib\\site-packages\\pandas\\io\\__init__.py',
    'PYMODULE'),
+  ('pandas.io._util',
+   'D:\\Program Files\\Python\\Lib\\site-packages\\pandas\\io\\_util.py',
+   'PYMODULE'),
   ('pandas.io.api',
    'D:\\Program Files\\Python\\Lib\\site-packages\\pandas\\io\\api.py',
    'PYMODULE'),
@@ -3738,10 +3758,6 @@
    'PYMODULE'),
   ('pandas.io.common',
    'D:\\Program Files\\Python\\Lib\\site-packages\\pandas\\io\\common.py',
-   'PYMODULE'),
-  ('pandas.io.date_converters',
-   'D:\\Program '
-   'Files\\Python\\Lib\\site-packages\\pandas\\io\\date_converters.py',
    'PYMODULE'),
   ('pandas.io.excel',
    'D:\\Program '
@@ -3775,9 +3791,6 @@
   ('pandas.io.excel._xlsxwriter',
    'D:\\Program '
    'Files\\Python\\Lib\\site-packages\\pandas\\io\\excel\\_xlsxwriter.py',
-   'PYMODULE'),
-  ('pandas.io.excel._xlwt',
-   'D:\\Program Files\\Python\\Lib\\site-packages\\pandas\\io\\excel\\_xlwt.py',
    'PYMODULE'),
   ('pandas.io.feather_format',
    'D:\\Program '
@@ -3817,10 +3830,6 @@
   ('pandas.io.formats.info',
    'D:\\Program '
    'Files\\Python\\Lib\\site-packages\\pandas\\io\\formats\\info.py',
-   'PYMODULE'),
-  ('pandas.io.formats.latex',
-   'D:\\Program '
-   'Files\\Python\\Lib\\site-packages\\pandas\\io\\formats\\latex.py',
    'PYMODULE'),
   ('pandas.io.formats.printing',
    'D:\\Program '
@@ -3945,10 +3954,6 @@
    'D:\\Program '
    'Files\\Python\\Lib\\site-packages\\pandas\\plotting\\_matplotlib\\boxplot.py',
    'PYMODULE'),
-  ('pandas.plotting._matplotlib.compat',
-   'D:\\Program '
-   'Files\\Python\\Lib\\site-packages\\pandas\\plotting\\_matplotlib\\compat.py',
-   'PYMODULE'),
   ('pandas.plotting._matplotlib.converter',
    'D:\\Program '
    'Files\\Python\\Lib\\site-packages\\pandas\\plotting\\_matplotlib\\converter.py',
@@ -3998,6 +4003,9 @@
    'D:\\Program '
    'Files\\Python\\Lib\\site-packages\\pandas\\tseries\\frequencies.py',
    'PYMODULE'),
+  ('pandas.tseries.holiday',
+   'D:\\Program Files\\Python\\Lib\\site-packages\\pandas\\tseries\\holiday.py',
+   'PYMODULE'),
   ('pandas.tseries.offsets',
    'D:\\Program Files\\Python\\Lib\\site-packages\\pandas\\tseries\\offsets.py',
    'PYMODULE'),
@@ -4022,9 +4030,6 @@
   ('pandas.util._validators',
    'D:\\Program '
    'Files\\Python\\Lib\\site-packages\\pandas\\util\\_validators.py',
-   'PYMODULE'),
-  ('pandas.util.testing',
-   'D:\\Program Files\\Python\\Lib\\site-packages\\pandas\\util\\testing.py',
    'PYMODULE'),
   ('pandas.util.version',
    'D:\\Program '
@@ -4136,6 +4141,7 @@
   ('pickleshare',
    'C:\\Users\\Home\\AppData\\Roaming\\Python\\Python311\\site-packages\\pickleshare.py',
    'PYMODULE'),
+  ('pickletools', 'D:\\Program Files\\Python\\Lib\\pickletools.py', 'PYMODULE'),
   ('pkg_resources',
    'D:\\Program Files\\Python\\Lib\\site-packages\\pkg_resources\\__init__.py',
    'PYMODULE'),

@@ -36,6 +36,7 @@ QtWidgets.QApplication.setAttribute(QtCore.Qt.AA_EnableHighDpiScaling, True) #en
 QtWidgets.QApplication.setAttribute(QtCore.Qt.AA_UseHighDpiPixmaps, True) #use highdpi icons
 
 class MainWindow(QtWidgets.QMainWindow):
+    
     def __init__(self):
         super(MainWindow, self).__init__()
         self.ui = Ui_MainWindow()
@@ -159,6 +160,10 @@ class MainWindow(QtWidgets.QMainWindow):
         self.tele.loxFlow = LiveLinePlot(pen=self.tele.loxPen)
         self.tele.flowGraph.addItem(self.tele.loxFlow)
         self.loxFlowConnector = DataConnector(self.tele.loxFlow, max_points=100, update_rate=5)
+
+
+        # Connect telemetry value output signal with slot
+        self.telemetry_value_updated.connect(self.showTelemetryValues)
 
         # Lock the controls
         self.enableControls(self.running)        
@@ -368,7 +373,6 @@ class MainWindow(QtWidgets.QMainWindow):
 
 
     def telemetry_collector(self):
-        sleep(2)
         while self.running:
             
             connectors = [self.nitroConnector, self.loxTankConnector, self.keroTankConnector, self.loxInjConnector, self.keroInjConnector, self.loxFlowConnector, self.keroFlowConnector]
@@ -388,24 +392,34 @@ class MainWindow(QtWidgets.QMainWindow):
                 if index < 8:
                     connectors[index - 1].cb_append_data_point(reading, self.output[0])
 
-                if index == 8:
-                    self.showTelemetryValues(4, round(reading, 3))
-                    #print("index 8 called")
-                elif index < 4:
-                    self.showTelemetryValues(index, round(reading, 3))
-
+                match index:
+                    case 8:
+                        self.telemetry_value_updated.emit(4, round(reading, 3))
+                    case 1:
+                        self.telemetry_value_updated.emit(1, round(reading, 3))
+                    case 2:
+                        self.telemetry_value_updated.emit(2, round(reading, 3))
+                    case 3:
+                        self.telemetry_value_updated.emit(3, round(reading, 3))
+                    
+                
             sleep(0.2)
     
 
-    #def telemetry_plotter(self, connector, index)
+        
+    # Define signal for telemetry update; index number AND telemetry value
+    telemetry_value_updated = QtCore.pyqtSignal(int, float)
 
-
-    
-    # Write to the right label
+    # Write to the right label via signal
+    # REF: https://stackoverflow.com/questions/74238920/why-will-threading-with-qt-5-12-successfully-update-a-qlabel-in-one-function-but
+    #      https://stackoverflow.com/questions/36434706/pyqt-proper-use-of-emit-and-pyqtsignal
+    @QtCore.pyqtSlot(int, float)
     def showTelemetryValues(self, index, value):
         fields = [self.tele.nitroPressure, self.tele.LOXPressure, self.tele.keroPressure, self.tele.DomePressure]
         names = ["Nitrogen Tank Pressure: ", "LOX Pressure: ", "Kerosene Tank Pressure: ", "Dome Pressure: "]
         fields[index - 1].setText(f"{names[index - 1]}{value}")
+
+
 
     def closeEvent(self, event):
         if self.running:

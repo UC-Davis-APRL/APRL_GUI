@@ -20,7 +20,6 @@ import pyqtgraph
 
 # Threading library for multi-thread plotting
 from threading import Thread
-import concurrent.futures
 
 # Library for SQL access
 import sqlite3 as sql
@@ -331,6 +330,7 @@ class MainWindow(QtWidgets.QMainWindow):
         Thread(target=self.telemetry_writer).start()
         Thread(target=self.telemetry_collector).start()
 
+        
 
     def close_database(self):
         self.readdatabase.close()
@@ -368,6 +368,7 @@ class MainWindow(QtWidgets.QMainWindow):
 
 
     def telemetry_collector(self):
+        sleep(2)
         while self.running:
             
             connectors = [self.nitroConnector, self.loxTankConnector, self.keroTankConnector, self.loxInjConnector, self.keroInjConnector, self.loxFlowConnector, self.keroFlowConnector]

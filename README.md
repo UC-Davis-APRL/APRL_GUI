@@ -1,3 +1,4 @@
+# Deprecated, see APRL-COSMOS for replacement
 # APRL-GUI 
 A frontend application for viewing engine telemetry and controlling engine systems, built in Qt 5.
 
